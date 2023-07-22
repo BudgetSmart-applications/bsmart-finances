@@ -55,7 +55,6 @@ export default defineComponent({
     const links = [{
         title: "Welcome",
         caption: "Welcome page",
-
         image: "src/pages/icons/welcome.png",
         link: "/",
       },
@@ -72,10 +71,10 @@ export default defineComponent({
         link: "/transactions",
       },
       {
-        title: "Messages",
-        caption: "Messages, alerts,  history",
-        image: "src/pages/icons/message.png",
-        link: "/messages",
+        title: "History & Logs",
+        caption: "Alerts, messages, logs & history",
+        image: "src/pages/icons/history.png",
+        link: "/history",
       },
       {
         title: "Reports",
@@ -91,9 +90,15 @@ export default defineComponent({
       },
       {
         title: "Settings",
-        caption: "Application settings, help, support",
-        image: "src/pages/icons/settings.png",
+        caption: "Application settings",
+        image: "src/pages/icons/settings-slider.png",
         link: "/settings",
+      },
+      {
+        title: "Help",
+        caption: "Help, tutorials & support",
+        image: "src/pages/icons/help.png",
+        link: "/help",
       }
     ]
 
