@@ -9,7 +9,7 @@
 <script>
 
 export default {
-  name: 'AddAccountPage',
+  name: 'AddBankPage',
   data(){
     return {}
   }

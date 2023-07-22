@@ -61,13 +61,49 @@ export default defineComponent({
     const appSettings = useSettingsStore
     const app = appSettings()
 
-
+    const links = [{
+        title: "Home",
+        caption: "Home page",
+        icon: "home",
+        link: "/",
+      },
+      {
+        title: "Banks",
+        caption: "Bank management",
+        icon: "account_balance_wallet",
+        link: "/banks",
+      },
+      {
+        title: "Accounts",
+        caption: "Account management",
+        icon: "account_balance_wallet",
+        link: "/accounts",
+      },
+      {
+        title: "Transactions",
+        caption: "Transaction management",
+        icon: "account_balance_wallet",
+        link: "/transactions",
+      },
+      {
+        title: "Contacts",
+        caption: "Contacts management",
+        icon: "account_balance_wallet",
+        link: "/transactions",
+      },
+      {
+        title: "Categories",
+        caption: "Category management",
+        icon: "account_balance_wallet",
+        link: "/categories",
+      }
+    ]
     const leftDrawerOpen = ref(false)
 
 
     return {
       app,
-      essentialLinks: app.settingsLinksList,
+      essentialLinks: links,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value

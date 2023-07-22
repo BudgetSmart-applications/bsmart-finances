@@ -22,7 +22,7 @@ export const useSettingsStore = defineStore("settings", {
         caption: "Messages, Alerts, and Notifications",
         icon: "message",
         link: "/messages",
-      }
+      },
     ],
     documentsLinkList: [
       {
@@ -38,7 +38,7 @@ export const useSettingsStore = defineStore("settings", {
         link: "/docs",
       },
     ],
-    accountsList: [
+    defaultLinkList: [
       {
         title: "Home",
         caption: "Home page",
@@ -47,29 +47,41 @@ export const useSettingsStore = defineStore("settings", {
       },
       {
         title: "Banks",
-        caption: "Bank Accounts",
+        caption: "Bank management",
         icon: "account_balance_wallet",
         link: "/banks",
       },
+      {
+        title: "Accounts",
+        caption: "Account management",
+        icon: "account_balance_wallet",
+        link: "/accounts",
+      },
+      {
+        title: "Transactions",
+        caption: "Transaction management",
+        icon: "account_balance_wallet",
+        link: "/transactions",
+      },
+      {
+        title: "Contacts",
+        caption: "Contacts management",
+        icon: "account_balance_wallet",
+        link: "/transactions",
+      },
+      {
+        title: "Categories",
+        caption: "Category management",
+        icon: "account_balance_wallet",
+        link: "/categories",
+      }
+    ],
+    linksList: [
       {
         title: "Settings",
         caption: "Messages, Alerts, Notifications",
         icon: "settings",
         link: "/settings",
-      },
-    ],
-    linksList: [
-      {
-        title: "Home",
-        caption: "Home page",
-        icon: "home",
-        link: "/",
-      },
-      {
-        title: "BSmart Finances",
-        caption: "Financial Management",
-        icon: "account_balance_wallet",
-        link: "/banks",
       },
       {
         title: "Docs",
@@ -83,19 +95,11 @@ export const useSettingsStore = defineStore("settings", {
         icon: "code",
         link: "/about",
       },
-      {
-        title: "Settings",
-        caption: "Messages, Alerts, Notifications",
-        icon: "settings",
-        link: "/settings",
-      },
-    ],
+    ]
   }),
 
   getters: {
-    doubleCount(state) {
-      return state.counter * 2;
-    },
+    
   },
 
   actions: {

@@ -1,0 +1,785 @@
+{
+  "banks": [
+    {
+      "bank_id": "0ce07395-88b0-4c42-b2dc-f0f86cbe6a3d",
+      "bank_name": "Wellsfargo Bank",
+      "bank_acronym": "WFB",
+      "bank_routing": "5687",
+      "bank_memo": "",
+      "account_id": "de6e165c-88b0-4c42-b2dc-f0f86cbe6a3d",
+      "starting_balance": "158214.31",
+      "ytd_balance": "158214.31",
+      "account_name": "Regular Savings",
+      "account_type": "Savings",
+      "account_number": "9087-45-0098",
+      "account_year": 2023,
+      "contacts": [{
+        "contact_id": "88e165c-88b0-4c42-b2dc-f0f86cbe6a3d",
+        "contact_name": "John Doe",
+        "contact_email": "john.doe@nomail.com",
+        "contact_phone": "253-456-7890",
+        "contact_memo": ""
+      }],
+      "transactions": [{
+        "transaction_id": "c153a5a0-5c1e-4b9e-8b0a-0b0b0b0b0b0b",
+        "date": "2023/01/01",
+        "amount": "158214.31",
+        "balance": "158214.31",
+        "income": "158214.31",
+        "name": "Opening balance",
+        "category": "Starting Balance",
+        "memo": "Starting Balance",
+        "type": "income",
+        "locked": true,
+        "icon": "lock",
+        "icon_label": "This transaction is locked and cannot be deleted."
+      }]
+    },
+    {
+      "bank_id": "dbe910d2-5cd1-4465-b9aa-bf90924ce62b",
+      "bank_name": "Washington State Employees Credit Union",
+      "bank_acronym": "WSECU",
+      "bank_routing": "63215",
+      "bank_memo": "",
+      "account_id": "dbe910de-4cef-4465-b9aa-bf90924ce62b",
+      "starting_balance": "5231.25",
+      "ytd_balance": "5231.25",
+      "account_name": "Checking",
+      "account_type": "Checking",
+      "account_number": "98754",
+      "account_year": 2023,
+      "contacts": [{
+        "contact_id": "88e165c-88b0-4c42-b2dc-f0f86cbe6a3d",
+        "contact_name": "John Doe",
+        "contact_email": "john.doe@nomail.com",
+        "contact_phone": "253-456-7890",
+        "contact_memo": ""
+      }],
+      "transactions":[{
+        "transaction_id": "c153a5a0-5c1e-4b9e-8b0a-0b0b0b0b0b0b",
+        "date": "2023/01/01",
+        "amount": "5231.25",
+        "balance": "5231.25",
+        "income": "5231.25",
+        "name": "Opening balance",
+        "category": "Starting Balance",
+        "memo": "Starting Balance",
+        "type": "income",
+        "locked": true,
+        "icon": "lock",
+        "icon_label": "This transaction is locked and cannot be deleted."
+      }]
+    },
+    {
+      "bank_id": "dbe910d1-5cd1-4465-b9aa-bf90924ce62b",
+      "bank_name": "Washington State Employees Credit Union",
+      "bank_acronym": "WSECU",
+      "bank_routing": "63215",
+      "bank_memo": "",
+      "account_id": "72f49851-56fd-4e7c-aef0-fbbbdb9beefb",
+      "starting_balance": "897.32",
+      "ytd_balance": "897.32",
+      "account_name": "Savings",
+      "account_type": "Savings",
+      "account_number": "1234",
+      "account_year": 2023,
+      "contacts": [{
+        "contact_id": "88e165c-88b0-4c42-b2dc-f0f86cbe6a3d",
+        "contact_name": "John Doe",
+        "contact_email": "john.doe@nomail.com",
+        "contact_phone": "253-456-7890",
+        "contact_memo": ""
+      }],
+      "transactions":[{
+        "transaction_id": "c153a5a0-4b9e-5c1e-8b0a-0b0b0b0b0b0b",
+        "date": "2023/01/01",
+        "amount": "897.32",
+        "balance": "897.32",
+        "income": "897.32",
+        "name": "Opening balance",
+        "category": "Starting Balance",
+        "memo": "Starting Balance",
+        "type": "income",
+        "locked": true,
+        "icon": "lock",
+        "icon_label": "This transaction is locked and cannot be deleted."
+      }]
+    },
+    {
+      "bank_id": "7b68e56c-716e-4d40-8d29-2a8084c63084",
+      "bank_name": "Bank of America",
+      "bank_acronym": "BOF",
+      "bank_routing": "98752",
+      "bank_memo": "",
+      "account_id": "7b68e56c-716e-4d40-8d29-40b26f0e6b1b",
+      "starting_balance": "878.12",
+      "ytd_balance": "878.12",
+      "account_name": "Adv Tier Checking",
+      "account_type": "Checking",
+      "account_number": "65236515",
+      "account_year": 2023,
+      "contacts": [{
+        "contact_id": "88e165c-88b0-4c42-b2dc-f0f86cbe6a3d",
+        "contact_name": "John Doe",
+        "contact_email": "john.doe@nomail.com",
+        "contact_phone": "253-456-7890",
+        "contact_memo": ""
+      }],
+      "transactions":[{
+        "transaction_id": "b78a88f-5c1e-4b9e-8b0a-0b0b0b0b0b0b",
+        "date": "2023/01/01",
+        "amount": "878.12",
+        "balance": "878.12",
+        "income": "878.12",
+        "name": "Opening balance",
+        "category": "Starting Balance",
+        "memo": "Starting Balance",
+        "type": "income",
+        "locked": true,
+        "icon": "lock",
+        "icon_label": "This transaction is locked and cannot be deleted."
+      }]
+    },
+    {
+      "bank_id": "7b68e56c-7162-4d40-8d29-2a8084c63084",
+      "bank_name": "Bank of America",
+      "bank_acronym": "BOF",
+      "bank_routing": "98752",
+      "bank_memo": "",
+      "account_id": "6ca7e6ca-df06-475a-98ba-40b26f0e6b1b",
+      "starting_balance": "5231.25",
+      "ytd_balance": "5231.25",
+      "account_name": "Basic Savings",
+      "account_type": "Savings",
+      "account_number": "98754",
+      "account_year": 2023,
+      "contacts": [{
+        "contact_id": "88e165c-88b0-4c42-b2dc-f0f86cbe6a3d",
+        "contact_name": "John Doe",
+        "contact_email": "john.doe@nomail.com",
+        "contact_phone": "253-456-7890",
+        "contact_memo": ""
+      }],
+      "transactions":[{
+        "transaction_id": "c153a5a0-78a8-4b9e-8b0a-0b0b0b0b0b0b",
+        "date": "2023/01/01",
+        "amount": "5231.25",
+        "balance": "5231.25",
+        "income": "5231.25",
+        "name": "Opening balance",
+        "category": "Starting Balance",
+        "memo": "Starting Balance",
+        "type": "income",
+        "locked": true,
+        "icon": "lock",
+        "icon_label": "This transaction is locked and cannot be deleted."
+      }]
+    },
+    {
+      "bank_id": "de6e165c-e6c6-4a63-a806-36d5e2ce5dbf",
+      "bank_name": "Key Bank",
+      "bank_acronym": "Key",
+      "bank_routing": "123547859632",
+      "bank_memo": "",
+      "account_id": "de6e165c-df06-4a63-a806-36d5e2ce5dbf",
+      "starting_balance": "893.21",
+      "ytd_balance": "893.21",
+      "account_name": "Savings ",
+      "account_type": "Savings",
+      "account_number": "985674",
+      "account_year": 2023,
+      "contacts": [{
+        "contact_id": "88e165c-88b0-4c42-b2dc-f0f86cbe6a3d",
+        "contact_name": "John Doe",
+        "contact_email": "john.doe@nomail.com",
+        "contact_phone": "253-456-7890",
+        "contact_memo": ""
+      }],
+      "transactions":[{
+        "transaction_id": "c153a5a0-5c1e-4b9e-8b0a-1b1b1bab3bbb",
+        "date": "2023/01/01",
+        "amount": "893.21",
+        "balance": "893.21",
+        "income": "893.21",
+        "name": "Opening balance",
+        "category": "Starting Balance",
+        "memo": "Starting Balance",
+        "type": "income",
+        "locked": true,
+        "icon": "lock",
+        "icon_label": "This transaction is locked and cannot be deleted."
+      }]
+    }
+  ],
+  "contacts": [{
+      "contact_id": "88e165c-88b0-4c42-b2dc-f0f86cbe6a3d",
+      "bank_id": "0ce07395-88b0-4c42-b2dc-f0f86cbe6a3d",
+      "contact_name": "John Doe",
+      "contact_email": "john.doe@nomail.com",
+      "contact_phone": "253-456-7890",
+      "contact_memo": ""
+    },
+    {
+      "contact_id": "89ef165c-88b0-4c42-b2dc-f0f86cbe6a3d",
+      "bank_id": "dbe910de-5cd1-4465-b9aa-bf90924ce62b",
+      "contact_name": "Jane Doe",
+      "contact_email": "jane.doe@nomail.com",
+      "contact_phone": "360-456-7890",
+      "contact_memo": ""
+    },
+    {
+      "contact_id": "99ef165c-88b0-4c42-b2dc-f0f86cbe6a3d",
+      "bank_id": "7b68e56c-716e-4d40-8d29-2a8084c63084",
+      "contact_name": "John Smith",
+      "contact_email": "john.smith@nomail.com",
+      "contact_phone": "206-365-7890",
+      "contact_memo": ""
+    },
+    {
+      "contact_id": "88ef165c-88b0-4562-b2dc-f0f86cbe6a3d",
+      "bank_id": "de6e165c-e6c6-4a63-a806-36d5e2ce5dbf",
+      "contact_name": "Jane Smith",
+      "contact_email": "jane.smith@nomail.com",
+      "contact_phone": "425-456-7890",
+      "contact_memo": ""
+    }
+  ],
+  "transactions": [{
+      "account_id": "de6e165c-88b0-4c42-b2dc-f0f86cbe6a3d",
+      "transaction_id": "c153a5a0-5c1e-4b9e-8b0a-0b0b0b0b0b0b",
+      "date": "2023/01/01",
+      "amount": "158214.31",
+      "balance": "158214.31",
+      "income": "158214.31",
+      "name": "Opening balance",
+      "category": "Starting Balance",
+      "memo": "Starting Balance",
+      "type": "income",
+      "locked": true,
+      "icon": "lock",
+      "icon_label": "This transaction is locked and cannot be deleted."
+    },
+    {
+      "account_id": "dbe910de-4cef-4465-b9aa-bf90924ce62b",
+      "transaction_id": "c153a5a0-5c1e-4b9e-8b0a-0b0b0b0b0b0b",
+      "date": "2023/01/01",
+      "amount": "5231.25",
+      "balance": "5231.25",
+      "income": "5231.25",
+      "name": "Opening balance",
+      "category": "Starting Balance",
+      "memo": "Starting Balance",
+      "type": "income",
+      "locked": true,
+      "icon": "lock",
+      "icon_label": "This transaction is locked and cannot be deleted."
+    },
+    {
+      "account_id": "72f49851-56fd-4e7c-aef0-fbbbdb9beefb",
+      "transaction_id": "c153a5a0-4b9e-5c1e-8b0a-0b0b0b0b0b0b",
+      "date": "2023/01/01",
+      "amount": "897.32",
+      "balance": "897.32",
+      "income": "897.32",
+      "name": "Opening balance",
+      "category": "Starting Balance",
+      "memo": "Starting Balance",
+      "type": "income",
+      "locked": true,
+      "icon": "lock",
+      "icon_label": "This transaction is locked and cannot be deleted."
+    },
+    {
+      "account_id": "7b68e56c-716e-4d40-8d29-40b26f0e6b1b",
+      "transaction_id": "b78a88f-5c1e-4b9e-8b0a-0b0b0b0b0b0b",
+      "date": "2023/01/01",
+      "amount": "878.12",
+      "balance": "878.12",
+      "income": "878.12",
+      "name": "Opening balance",
+      "category": "Starting Balance",
+      "memo": "Starting Balance",
+      "type": "income",
+      "locked": true,
+      "icon": "lock",
+      "icon_label": "This transaction is locked and cannot be deleted."
+    },
+    {
+      "account_id": "6ca7e6ca-df06-475a-98ba-40b26f0e6b1b",
+      "transaction_id": "c153a5a0-78a8-4b9e-8b0a-0b0b0b0b0b0b",
+      "date": "2023/01/01",
+      "amount": "5231.25",
+      "balance": "5231.25",
+      "income": "5231.25",
+      "name": "Opening balance",
+      "category": "Starting Balance",
+      "memo": "Starting Balance",
+      "type": "income",
+      "locked": true,
+      "icon": "lock",
+      "icon_label": "This transaction is locked and cannot be deleted."
+    },
+    {
+      "account_id": "de6e165c-df06-4a63-a806-36d5e2ce5dbf",
+      "transaction_id": "c153a5a0-5c1e-4b9e-8b0a-1b1b1bab3bbb",
+      "date": "2023/01/01",
+      "amount": "893.21",
+      "balance": "893.21",
+      "income": "893.21",
+      "name": "Opening balance",
+      "category": "Starting Balance",
+      "memo": "Starting Balance",
+      "type": "income",
+      "locked": true,
+      "icon": "lock",
+      "icon_label": "This transaction is locked and cannot be deleted."
+    }
+  ],
+  "accounts": [{
+      "account_id": "de6e165c-88b0-4c42-b2dc-f0f86cbe6a3d",
+      "bank_id": "0ce07395-88b0-4c42-b2dc-f0f86cbe6a3d",
+      "starting_balance": "158214.31",
+      "ytd_balance": "158214.31",
+      "account_name": "Regular Savings",
+      "account_type": "Savings",
+      "account_number": "9087-45-0098",
+      "account_year": 2023
+    },
+    {
+      "account_id": "dbe910de-4cef-4465-b9aa-bf90924ce62b",
+      "bank_id": "dbe910de-5cd1-4465-b9aa-bf90924ce62b",
+      "starting_balance": "5231.25",
+      "ytd_balance": "5231.25",
+      "account_name": "Checking",
+      "account_type": "Checking",
+      "account_number": "98754",
+      "account_year": 2023
+    },
+    {
+      "account_id": "72f49851-56fd-4e7c-aef0-fbbbdb9beefb",
+      "bank_id": "dbe910de-5cd1-4465-b9aa-bf90924ce62b",
+      "starting_balance": "897.32",
+      "ytd_balance": "897.32",
+      "account_name": "Savings",
+      "account_type": "Savings",
+      "account_number": "1234",
+      "account_year": 2023
+    },
+    {
+      "account_id": "7b68e56c-716e-4d40-8d29-40b26f0e6b1b",
+      "bank_id": "7b68e56c-716e-4d40-8d29-2a8084c63084",
+      "starting_balance": "878.12",
+      "ytd_balance": "878.12",
+      "account_name": "Adv Tier Checking",
+      "account_type": "Checking",
+      "account_number": "65236515",
+      "account_year": 2023
+    },
+    {
+      "account_id": "6ca7e6ca-df06-475a-98ba-40b26f0e6b1b",
+      "bank_id": "7b68e56c-716e-4d40-8d29-2a8084c63084",
+      "starting_balance": "5231.25",
+      "ytd_balance": "5231.25",
+      "account_name": "Basic Savings",
+      "account_type": "Savings",
+      "account_number": "98754",
+      "account_year": 2023
+    },
+    {
+      "account_id": "de6e165c-df06-4a63-a806-36d5e2ce5dbf",
+      "bank_id": "de6e165c-e6c6-4a63-a806-36d5e2ce5dbf",
+      "starting_balance": "893.21",
+      "ytd_balance": "893.21",
+      "account_name": "Savings ",
+      "account_type": "Savings",
+      "account_number": "985674",
+      "account_year": 2023
+    }
+  ],
+  "messages": [{
+    "message": "You account has a negative balance of 66.66 for: Bank of America on 0/21/2023 for -75.21. Difference -40.90"
+  }],
+  "settings": [{
+    "name": "BudgetSmart Applications",
+    "version": "1.0.01"
+  }],
+  "categories": [{
+      "category": "Savings"
+    },
+    {
+      "category": "Investing"
+    },
+    {
+      "category": "Retirement Planning"
+    },
+    {
+      "category": "Debt Management"
+    },
+    {
+      "category": "Insurance"
+    },
+    {
+      "category": "Tax Planning"
+    },
+    {
+      "category": "Budgeting"
+    },
+    {
+      "category": "College Planning"
+    },
+    {
+      "category": "Credit Card"
+    },
+    {
+      "category": "Estate Planning"
+    },
+    {
+      "category": "Loans"
+    },
+    {
+      "category": "Mutual Funds"
+    },
+    {
+      "category": "Real Estate"
+    },
+    {
+      "category": "Financial Planning"
+    },
+    {
+      "category": "Retirement Accounts"
+    },
+    {
+      "category": "CDs"
+    },
+    {
+      "category": "Stocks"
+    },
+    {
+      "category": "Trusts"
+    },
+    {
+      "category": "Bonds"
+    },
+    {
+      "category": "Financial Goals"
+    },
+    {
+      "category": "Financial Literacy"
+    },
+    {
+      "category": "Financial Management"
+    },
+    {
+      "category": "Mortgages"
+    },
+    {
+      "category": "Personal Finance"
+    },
+    {
+      "category": "Risk Management"
+    },
+    {
+      "category": "Saving for College"
+    },
+    {
+      "category": "Small Business"
+    },
+    {
+      "category": "Wealth Management"
+    },
+    {
+      "category": "Banking"
+    },
+    {
+      "category": "Business Financing"
+    },
+    {
+      "category": "Cash Flow Management"
+    },
+    {
+      "category": "Charitable Giving"
+    },
+    {
+      "category": "Credit Score"
+    },
+    {
+      "category": "Debt Consolidation"
+    },
+    {
+      "category": "Financial Education"
+    },
+    {
+      "category": "Financial Freedom"
+    },
+    {
+      "category": "Financial Security"
+    },
+    {
+      "category": "Identity Theft Protection"
+    },
+    {
+      "category": "Money Management"
+    },
+    {
+      "category": "Retirement Income"
+    },
+    {
+      "category": "Saving for Retirement"
+    },
+    {
+      "category": "Annuities"
+    },
+    {
+      "category": "Asset Management"
+    },
+    {
+      "category": "Credit Reports"
+    },
+    {
+      "category": "Debt Relief"
+    },
+    {
+      "category": "Emergency Savings"
+    },
+    {
+      "category": "Financial Advice"
+    },
+    {
+      "category": "Financial Freedom"
+    },
+    {
+      "category": "Financial Planning Tools"
+    },
+    {
+      "category": "Financial Wellness"
+    },
+    {
+      "category": "Home Financing"
+    },
+    {
+      "category": "Investment Strategies"
+    },
+    {
+      "category": "Money Market Accounts"
+    },
+    {
+      "category": "Retirement Planning Tools"
+    },
+    {
+      "category": "Saving for a Home"
+    },
+    {
+      "category": "Saving for Vacation"
+    },
+    {
+      "category": "Tax Preparation"
+    },
+    {
+      "category": "401(k)s"
+    },
+    {
+      "category": "Alternative Investments"
+    },
+    {
+      "category": "Asset Allocation"
+    },
+    {
+      "category": "Credit Repair"
+    },
+    {
+      "category": "Debt Reduction"
+    },
+    {
+      "category": "Financial Coaching"
+    },
+    {
+      "category": "Financial Planning Software"
+    },
+    {
+      "category": "Financial Responsibility"
+    },
+    {
+      "category": "Hedge Funds"
+    },
+    {
+      "category": "Insurance Planning"
+    },
+    {
+      "category": "Money Market Funds"
+    },
+    {
+      "category": "Retirement Planning Software"
+    },
+    {
+      "category": "Saving for Business"
+    },
+    {
+      "category": "Saving for Vacations"
+    },
+    {
+      "category": "Tax Planning Strategies"
+    },
+    {
+      "category": "529 Plans"
+    },
+    {
+      "category": "Alternative Investments"
+    },
+    {
+      "category": "Banking Services"
+    },
+    {
+      "category": "Commodities"
+    },
+    {
+      "category": "Credit Card Consolidation"
+    },
+    {
+      "category": "Debt Collection"
+    },
+    {
+      "category": "Financial Coaching"
+    },
+    {
+      "category": "Financial Freedom"
+    },
+    {
+      "category": "Financial Planning Process"
+    },
+    {
+      "category": "HSA Accounts"
+    },
+    {
+      "category": "Money Management Tips"
+    },
+    {
+      "category": "Retirement Planning Process"
+    },
+    {
+      "category": "Saving for Kids"
+    },
+    {
+      "category": "Saving Strategies"
+    },
+    {
+      "category": "Tax Refunds"
+    },
+    {
+      "category": "Banking Services"
+    },
+    {
+      "category": "Commodities"
+    },
+    {
+      "category": "Credit Card Consolidation"
+    },
+    {
+      "category": "Debt Collection"
+    },
+    {
+      "category": "Financial Planning Process"
+    },
+    {
+      "category": "HSA Accounts"
+    },
+    {
+      "category": "Money Management Tips"
+    },
+    {
+      "category": "Retirement Planning Process"
+    },
+    {
+      "category": "Saving for Kids"
+    },
+    {
+      "category": "Saving Strategies"
+    },
+    {
+      "category": "Tax Refunds"
+    },
+    {
+      "category": "Asset Protection"
+    },
+    {
+      "category": "Credit Card Rewards"
+    },
+    {
+      "category": "Debt Settlement"
+    },
+    {
+      "category": "Financial Planning Strategies"
+    },
+    {
+      "category": "Income Protection"
+    },
+    {
+      "category": "Money Market Rates"
+    },
+    {
+      "category": "Retirement Planning Strategies"
+    },
+    {
+      "category": "Saving for Emergencies"
+    },
+    {
+      "category": "Saving Tips"
+    },
+    {
+      "category": "Tax Strategies"
+    },
+    {
+      "category": "Budget Calculator"
+    },
+    {
+      "category": "Cryptocurrency"
+    },
+    {
+      "category": "Debt Snowball"
+    },
+    {
+      "category": "Financial Planning Techniques"
+    },
+    {
+      "category": "Investment Advice"
+    },
+    {
+      "category": "Money Saving Tips"
+    },
+    {
+      "category": "Retirement Planning Techniques"
+    },
+    {
+      "category": "Saving for Retirement"
+    },
+    {
+      "category": "Saving Tips"
+    },
+    {
+      "category": "Tax-Advantaged Accounts"
+    },
+    {
+      "category": "Budgeting Tools"
+    },
+    {
+      "category": "Debt Management Plan"
+    },
+    {
+      "category": "Financial Planning Software"
+    },
+    {
+      "category": "Investment Portfolio"
+    },
+    {
+      "category": "Money Transfer"
+    },
+    {
+      "category": "Retirement Savings"
+    },
+    {
+      "category": "Saving Strategies"
+    },
+    {
+      "category": "Tax Planning Software"
+    }
+  ]
+}

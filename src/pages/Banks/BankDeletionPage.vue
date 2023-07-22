@@ -7,7 +7,7 @@
 <script>
 
 export default {
-  name: 'AccountsPage',
+  name: 'BankDeletionPage',
   data(){
     return {}
   }

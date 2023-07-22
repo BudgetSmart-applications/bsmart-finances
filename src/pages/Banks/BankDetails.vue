@@ -7,7 +7,7 @@
 <script>
 
 export default {
-  name: 'AccountsPage',
+  name: 'BankDetails',
   data(){
     return {}
   }

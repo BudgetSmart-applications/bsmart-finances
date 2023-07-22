@@ -12,24 +12,16 @@
         />
 
         <q-toolbar-title>
-          {{ app.name }}
+          {{ markup.name }}
         </q-toolbar-title>
 
-        <div>{{app.name}} v{{ app.version }}</div>
+        <div>{{ markup.name }} v{{ markup.version }}</div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
+    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label
-          header
-        >
-          BSmart Applications
-        </q-item-label>
+        <q-item-label header> {{ markup.name }} Finances </q-item-label>
 
         <EssentialLink
           v-for="link in essentialLinks"
@@ -39,40 +31,81 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container class="q-ma-lg">
+    <q-page-container class="q-ma-sm">
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
-import { useSettingsStore} from 'src/stores/settings'
-
+import { defineComponent, ref } from "vue";
+import EssentialLink from "components/EssentialLink.vue";
 export default defineComponent({
-  name: 'MainLayout',
+  name: "MainLayout",
 
   components: {
-    EssentialLink
+    EssentialLink,
   },
 
-  setup () {
-    const appSettings = useSettingsStore
-    const app = appSettings()
+  setup() {
+    const markup = {
+      name: 'BSmart',
+      version: '0.0.1',
+    };
+    const links = [{
+        title: "Welcome",
+        caption: "Welcome page",
 
-
-    const leftDrawerOpen = ref(false)
-
-
-    return {
-      app,
-      essentialLinks: app.linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
+        image: "src/pages/icons/welcome.png",
+        link: "/",
+      },
+      {
+        title: "Accounts",
+        caption: "Financial management",
+        image: "src/pages/icons/account.png",
+        link: "/accounts",
+      },
+      {
+        title: "Transactions",
+        caption: "Transaction management",
+        image: "src/pages/icons/transactions.png",
+        link: "/transactions",
+      },
+      {
+        title: "Messages",
+        caption: "Messages, alerts,  history",
+        image: "src/pages/icons/message.png",
+        link: "/messages",
+      },
+      {
+        title: "Reports",
+        caption: "Reports, charts, graphs",
+        image: "src/pages/icons/reports.png",
+        link: "/reports",
+      },
+      {
+        title: "Categories",
+        caption: "Category management",
+        image: "src/pages/icons/categories.png",
+        link: "/category",
+      },
+      {
+        title: "Settings",
+        caption: "Application settings, help, support",
+        image: "src/pages/icons/settings.png",
+        link: "/settings",
       }
-    }
-  }
-})
+    ]
+
+    const leftDrawerOpen = ref(false);
+    return {
+      markup,
+      essentialLinks: links,
+      leftDrawerOpen,
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+    };
+  },
+});
 </script>
