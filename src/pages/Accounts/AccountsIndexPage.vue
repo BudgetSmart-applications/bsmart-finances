@@ -1,13 +1,30 @@
 <template>
   <div class="q-ma-sm">
     <div class="text-h4">Accounts</div>
-
+<div class="q-mt-sm">
+          <div class="q-col-gutter-md row item-start">
+            <div class="col-8">
+              <q-select
+                dense
+                class="q-mb-sm"
+                outlined
+                v-model="selected_bank"
+                :options="bankListOfNames"
+                label="Select an account"
+              />
+            </div>
+            <div class="col-4">
+              <q-btn color="primary" icon="visibility" />
+            </div>
+          </div>
+        </div>
     <div class="q-pa-md">
       <div class="q-col-gutter-md row items-start">
         <div class="col-4">
           <q-img class="cursor-pointer" src="src/pages/icons/account.png">
           </q-img>
         </div>
+
         <div class="col-10">
           <p>
             <strong>Definition:</strong> A financial account in BudgetSmart is a
@@ -50,7 +67,7 @@
     <q-card style="width: 800px">
       <q-card-section v-if="!startWizard">
         <q-card-title>
-      <div class="text-h4 q-pb-lg">New account wizard</div>
+          <div class="text-h4 q-pb-lg">New account wizard</div>
           <div class="section">
             <div class="paragraph">
               <p>
@@ -87,8 +104,7 @@
       </q-card-section>
       <q-card-section v-if="startWizard">
         <q-card-title>
-
-      <div class="text-h4 q-pb-lg">New account wizard</div>
+          <div class="text-h4 q-pb-lg">New account wizard</div>
           <div>
             <div class="q-pa-sm">
               Does this bank already exists in BudgetSmart?
