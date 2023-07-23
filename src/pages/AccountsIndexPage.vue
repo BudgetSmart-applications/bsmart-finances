@@ -50,117 +50,66 @@
             <q-tooltip class="bg-white text-primary">Close</q-tooltip>
           </q-btn>
         </q-bar>
-        <q-card-section class="bg-white">
+        <q-card-section class="bg-white text-black">
           <div class="q-pa-md shadow-24">
-            <div>
-              <div>
-                <q-form>
-                  <div class="q-mt-md">
-                    <q-select
-                      dense
-                      class="q-py-sm"
-                      :options="accounting_year"
-                      outlined
-                      v-model="account_year"
-                      label="Accounting Year"
-                    />
-                    <q-input
-                      dense
-                      class="q-py-sm"
-                      outlined
-                      v-model="bank_name"
-                      label="Bank name"
-                    />
-                    <q-input
-                      dense
-                      class="q-py-sm"
-                      outlined
-                      v-model="bank_acronym"
-                      label="Bank acronym"
-                    />
-                    <q-input
-                      dense
-                      class="q-py-sm"
-                      outlined
-                      v-model="bank_routing"
-                      label="Routing number"
-                    />
-                    <q-input
-                      dense
-                      class="q-py-sm"
-                      type="number"
-                      mode="numeric"
-                      outlined
-                      v-model="starting_balance"
-                      label="Starting balance"
-                    />
-                    <q-input
-                      dense
-                      class="q-py-sm"
-                      outlined
-                      v-model="account_name"
-                      label="Account name"
-                    />
-
-                    <q-input
-                      dense
-                      class="q-py-sm"
-                      outlined
-                      v-model="account_number"
-                      label="Account number"
-                    />
-
-                    <q-select
-                      dense
-                      class="q-py-sm"
-                      :options="options"
-                      outlined
-                      v-model="account_type"
-                      label="Account type"
-                    />
-                    <q-input
-                      dense
-                      class="q-py-sm"
-                      outlined
-                      v-model="contact_name"
-                      label="Contact name"
-                    /><q-input
-                      dense
-                      class="q-py-sm"
-                      outlined
-                      v-model="contact_email"
-                      label="Contact email"
-                    /><q-input
-                      dense
-                      class="q-py-sm"
-                      outlined
-                      v-model="contact_phone"
-                      label="Contact phone"
-                    /><q-input
-                      dense
-                      class="q-py-sm"
-                      outlined
-                      v-model="contact_memo"
-                      label="Contact memo"
-                    />
-                  </div>
-                </q-form>
-              </div>
+            <div class="q-mt-md">
+              <div class="text-h5">{{ action }} Account</div>
+              <q-select
+                dense
+                class="q-py-sm"
+                :options="accounting_year"
+                outlined
+                v-model="account_year"
+                label="Accounting Year"
+              />
+              <q-select
+                dense
+                class="q-py-sm"
+                :options="options"
+                outlined
+                v-model="account_type"
+                label="Account type"
+              />
+              <q-input
+                dense
+                class="q-py-sm"
+                outlined
+                v-model="bank_name"
+                label="Bank name"
+              />
+              <q-input
+                dense
+                class="q-py-sm"
+                outlined
+                v-model="account_name"
+                label="Account name"
+              />
+              <q-input
+                dense
+                class="q-py-sm"
+                type="number"
+                mode="numeric"
+                outlined
+                v-model="starting_balance"
+                label="Starting balance"
+              />
             </div>
           </div>
         </q-card-section>
         <q-card-actions>
           <q-btn
+            v-if="action === 'Create'"
             class="q-ma-sm"
             color="secondary"
-            @click="showCreateAccount = false"
-            >Create account</q-btn
+            @click="saveNewAccount"
+            >Save</q-btn
           >
           <q-btn
+            v-if="action === 'Update'"
             class="q-ma-sm"
             color="secondary"
             @click="showCreateAccount = false"
-            >Update account</q-btn
+            >Update</q-btn
           >
           <q-btn color="negative" label="Cancel" v-close-popup />
         </q-card-actions>
@@ -172,10 +121,50 @@
 <script>
 import DataTable from "src/components/DataTable.vue";
 import { useFinanceStore } from "src/stores/finances";
+import {v4 as uuid} from "uuid";
 export default {
   components: { DataTable },
   name: "AccountsIndexPage",
   methods: {
+    saveNewAccount() {
+      this.showCreateAccount = false;
+      let newAccount = {
+        bank_id: uuid(),
+        bank_name: this.bank_name,
+        bank_acronym: this.bank_acronym,
+        bank_routing: this.bank_routing,
+        bank_memo: "",
+        account_id: uuid(),
+        starting_balance: this.starting_balance,
+        ytd_balance: this.starting_balance,
+        account_name: this.account_name,
+        account_type: this.account_type,
+        account_number: this.account_number,
+        account_year: this.account_year,
+        contact_id: uuid(),
+        contact_name: this.contact_name,
+        contact_email: this.contact_email,
+        contact_phone: this.contact_phone,
+        contact_memo: "",
+        transactions: [
+          {
+            transaction_id: uuid(),
+            date: "2023/01/01",
+            amount: this.starting_balance,
+            balance: this.starting_balance,
+            income: this.starting_balance,
+            name: "Opening balance",
+            category: "Starting Balance",
+            memo: "Starting Balance",
+            type: "income",
+            locked: true,
+            icon: "lock",
+            icon_label: "This transaction is locked and cannot be deleted.",
+          },
+        ],
+      };
+      this.bank_rows.push(newAccount);
+    },
     deleteItem(account) {
       console.log("emit to parent for deletion", account);
       const filteredAccounts = this.bank_rows.filter(
@@ -183,10 +172,9 @@ export default {
       );
       this.bank_rows = filteredAccounts;
       this.showCreateAccount = false;
-      // delete account row
     },
     createItem() {
-      console.log("emit to parent");
+      console.log("emit to parent for creating new");
       this.showCreateAccount = true;
       this.showUpdate = false;
       this.bank_name = "";
@@ -201,6 +189,7 @@ export default {
       this.contact_email = "";
       this.contact_phone = "";
       this.contact_memo = "";
+      this.action = "Create";
     },
     editItem(row) {
       console.log("emit to parent", row);
@@ -218,6 +207,7 @@ export default {
       this.contact_email = row.contact_email;
       this.contact_phone = row.contact_phone;
       this.contact_memo = row.contact_memo;
+      this.action = "Update";
     },
   },
   setup() {
@@ -231,6 +221,7 @@ export default {
   },
   data() {
     return {
+      action: "Create",
       filter: "",
       maximizedToggle: true,
       showCreateAccount: false,
@@ -238,7 +229,7 @@ export default {
       selectedRow: "",
       showUpdate: false,
       showCreateAccount: false,
-      options: ["Checking Account", "Savings Account"],
+      options: ["Checking", "Savings"],
       bank_name: "",
       account_name: "",
       account_type: "",
