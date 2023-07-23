@@ -55,49 +55,49 @@ export default defineComponent({
     const links = [{
         title: "Welcome",
         caption: "Welcome page",
-        image: "src/pages/icons/welcome.png",
+        image: "/src/pages/icons/welcome.png",
         link: "/",
       },
       {
         title: "Accounts",
         caption: "Financial management",
-        image: "src/pages/icons/account.png",
+        image: "/src/pages/icons/account.png",
         link: "/accounts",
       },
       {
         title: "Transactions",
         caption: "Transaction management",
-        image: "src/pages/icons/transactions.png",
+        image: "/src/pages/icons/transactions.png",
         link: "/transactions",
       },
       {
         title: "History & Logs",
         caption: "Alerts, messages, logs & history",
-        image: "src/pages/icons/history.png",
+        image: "/src/pages/icons/history.png",
         link: "/history",
       },
       {
         title: "Reports",
         caption: "Reports, charts, graphs",
-        image: "src/pages/icons/reports.png",
+        image: "/src/pages/icons/reports.png",
         link: "/reports",
       },
       {
         title: "Categories",
         caption: "Category management",
-        image: "src/pages/icons/categories.png",
+        image: "/src/pages/icons/categories.png",
         link: "/category",
       },
       {
         title: "Settings",
         caption: "Application settings",
-        image: "src/pages/icons/settings-slider.png",
+        image: "/src/pages/icons/settings-slider.png",
         link: "/settings",
       },
       {
         title: "Help",
         caption: "Help, tutorials & support",
-        image: "src/pages/icons/help.png",
+        image: "/src/pages/icons/help.png",
         link: "/help",
       }
     ]
