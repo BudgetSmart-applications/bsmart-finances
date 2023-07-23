@@ -247,6 +247,8 @@ export default {
       this.account_number = row.account_number;
       this.account_year = row.account_year;
       this.transactions = row.transactions[0];
+      this.transaction_id = row.transactions[0].transaction_id;
+      this.contact_id = row.contact_id;
       this.contact_name = row.contact_name;
       this.contact_email = row.contact_email;
       this.contact_phone = row.contact_phone;
