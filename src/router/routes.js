@@ -6,7 +6,7 @@ const routes = [
     children: [
       { path: '',              component: () => import('src/pages/WelcomePage.vue') },
       { path: '/accounts',     component: () => import('src/pages/AccountsIndexPage.vue') },
-      { path: '/transactions', component: () => import('src/pages/TransactionsIndexPage.vue') },
+      { path: '/transactions/:bank_id', component: () => import('src/pages/TransactionsIndexPage.vue') },
       { path: '/history',      component: () => import('src/pages/HistoryPage.vue') },
       { path: '/reports',      component: () => import('src/pages/ReportsIndexPage.vue') },
       { path: '/category',     component: () => import('src/pages/CategoryIndexPage.vue') },

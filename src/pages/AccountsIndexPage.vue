@@ -10,6 +10,7 @@
           @editItem="editItem"
           @createItem="createItem"
           @deleteItem="deleteItem"
+          @openItem="redirectToItem"
         />
       </div>
     </div>
@@ -126,8 +127,11 @@ export default {
   components: { DataTable },
   name: "AccountsIndexPage",
   methods: {
+    redirectToItem(account){
+      // this.$router.push({ name: "TransactionsIndexPage", params: { bank_id: account.bank_id } });
+      this.$router.push('/transactions/' + account.bank_id);
+    },
     updateAccount(){
-
       this.showCreateAccount = false;
       let updatedAccount = {
         bank_id: this.bank_id,
