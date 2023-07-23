@@ -108,7 +108,7 @@
             v-if="action === 'Update'"
             class="q-ma-sm"
             color="secondary"
-            @click="showCreateAccount = false"
+            @click="updateAccount"
             >Update</q-btn
           >
           <q-btn color="negative" label="Cancel" v-close-popup />
@@ -126,6 +126,47 @@ export default {
   components: { DataTable },
   name: "AccountsIndexPage",
   methods: {
+    updateAccount(){
+
+      this.showCreateAccount = false;
+      let updatedAccount = {
+        bank_id: this.bank_id,
+        bank_name: this.bank_name,
+        bank_acronym: this.bank_acronym,
+        bank_routing: this.bank_routing,
+        bank_memo: "",
+        account_id: this.account_id,
+        starting_balance: this.starting_balance,
+        ytd_balance: this.starting_balance,
+        account_name: this.account_name,
+        account_type: this.account_type,
+        account_number: this.account_number,
+        account_year: this.account_year,
+        contact_id: this.contact_id,
+        contact_name: this.contact_name,
+        contact_email: this.contact_email,
+        contact_phone: this.contact_phone,
+        contact_memo: "",
+        transactions: [
+          {
+            transaction_id: this.transaction_id,
+            date: this.account_year + "/01/01",
+            amount: this.starting_balance,
+            balance: this.starting_balance,
+            income: this.starting_balance,
+            name: "Opening balance",
+            category: "Starting Balance",
+            memo: "Starting Balance",
+            type: "income",
+            locked: true,
+            icon: "lock",
+            icon_label: "This transaction is locked and cannot be deleted.",
+          },
+        ],
+      };
+      console.log('updated account',updatedAccount)
+      this.bank_rows[this.bank_rows.findIndex(x => x.bank_id === this.bank_id)] = updatedAccount;
+    },
     saveNewAccount() {
       this.showCreateAccount = false;
       let newAccount = {
@@ -149,7 +190,7 @@ export default {
         transactions: [
           {
             transaction_id: uuid(),
-            date: "2023/01/01",
+            date: this.account_year + "/01/01",
             amount: this.starting_balance,
             balance: this.starting_balance,
             income: this.starting_balance,
@@ -195,7 +236,9 @@ export default {
       console.log("emit to parent", row);
       this.showCreateAccount = true;
       this.showUpdate = true;
+      this.bank_id = row.bank_id;
       this.bank_name = row.bank_name;
+      this.account_id = row.account_id;
       this.account_name = row.account_name;
       this.account_type = row.account_type;
       this.starting_balance = row.starting_balance;
@@ -203,6 +246,7 @@ export default {
       this.bank_acronym = row.bank_acronym;
       this.account_number = row.account_number;
       this.account_year = row.account_year;
+      this.transactions = row.transactions[0];
       this.contact_name = row.contact_name;
       this.contact_email = row.contact_email;
       this.contact_phone = row.contact_phone;
