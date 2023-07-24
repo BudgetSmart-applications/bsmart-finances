@@ -68,7 +68,7 @@ export default defineComponent({
         title: "Transactions",
         caption: "Transaction management",
         image: "/src/pages/icons/transactions.png",
-        link: "/transactions",
+        link: "/transactions/1",
       },
       {
         title: "History & Logs",

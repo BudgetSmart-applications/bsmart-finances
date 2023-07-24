@@ -172,11 +172,12 @@ export default {
   computed: {
     filteredRow() {
       return this.bank_rows.filter((row) => {
-        return row.bank_id === this.$route.params.bank_id;
+        return row.bank_id === this.$route.params.bank_id ?? [];
       });
     },
     transactions() {
-      return this.filteredRow[0].transactions;
+      if(this.filteredRow.length > 0) return this.filteredRow[0].transactions;
+      else return [];
     },
     filteredCategories() {
       let categoryNamesList = [];
