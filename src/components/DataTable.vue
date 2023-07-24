@@ -29,15 +29,15 @@
       <template v-slot:body-cell-actions="props">
         <q-td key="actions" :props="props">
           <q-btn flat dense round @click="showConfirmationDialog(props.row)">
-            <q-img src="src/pages/icons/delete-trash.png" />
+            <q-img src="/src/pages/icons/delete-trash.png" />
             <q-tooltip>Delete Account</q-tooltip>
           </q-btn>
           <q-btn flat dense round @click="$emit('editItem', props.row)">
-            <q-img src="src/pages/icons/checking.png" />
+            <q-img src="/src/pages/icons/checking.png" />
             <q-tooltip>Edit Account</q-tooltip>
           </q-btn>
           <q-btn flat dense round @click="$emit('openItem', props.row)">
-            <q-img src="src/pages/icons/transactions.png" />
+            <q-img src="/src/pages/icons/transactions.png" />
             <q-tooltip>Open transactions</q-tooltip>
           </q-btn>
         </q-td>
@@ -48,7 +48,7 @@
         <q-card-section>
           <div class="q-col-gutter-md row items-start">
             <div class="col-4">
-              <q-img src="src/pages/icons/delete.png"></q-img>
+              <q-img src="/src/pages/icons/delete.png"></q-img>
             </div>
             <div class="col-8 q-mt-lg">
               <div class="text-h6">Confirm Delete {{ singularTitle }}</div>
@@ -82,7 +82,7 @@
 
 <script>
 import { defineComponent } from "vue";
-import { useFinanceStore } from "src/stores/finances";
+import { useFinanceStore } from "/src/stores/finances";
 
 export default defineComponent({
   name: "DataTableComponent",

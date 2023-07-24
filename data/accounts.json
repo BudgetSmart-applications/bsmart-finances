@@ -403,7 +403,8 @@
     "name": "BudgetSmart Applications",
     "version": "1.0.01"
   }],
-  "categories": [{
+  "categories": [
+    {
       "category": "Savings"
     },
     {

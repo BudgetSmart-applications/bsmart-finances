@@ -3,7 +3,7 @@
     <div class="q-col-gutter-md row items-start">
       <div class="col-12">
         <data-table
-          image="src/pages/icons/account-btn.png"
+          image="/src/pages/icons/account-btn.png"
           title="Accounts"
           :columns="bank_columns"
           :rows="bank_rows"
