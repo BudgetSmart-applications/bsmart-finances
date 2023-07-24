@@ -169,10 +169,11 @@ export default {
   created() {
     let temp = this.filteredRow[0];
 
+    console.log(temp)
     if (!temp) return;
     this.bank = {
       id: temp.bank_id,
-      label: temp.bank_name,
+      label: temp.bank_name + ' - ' + temp.account_name,
     };
   },
   computed: {
