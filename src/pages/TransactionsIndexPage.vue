@@ -167,7 +167,13 @@ export default {
   components: { DataTable },
   name: "TransactionsIndexPage",
   created() {
+    let temp = this.filteredRow[0];
 
+    if (!temp) return;
+    this.bank = {
+      id: temp.bank_id,
+      label: temp.bank_name,
+    };
   },
   computed: {
     filteredRow() {
@@ -176,7 +182,7 @@ export default {
       });
     },
     transactions() {
-      if(this.filteredRow.length > 0) return this.filteredRow[0].transactions;
+      if (this.filteredRow.length > 0) return this.filteredRow[0].transactions;
       else return [];
     },
     filteredCategories() {
@@ -201,7 +207,7 @@ export default {
   methods: {
     switchBank() {
       console.log("switch bank ", this.bank);
-      this.$router.push('/transactions/' + this.bank.id);
+      this.$router.push("/transactions/" + this.bank.id);
     },
     createItem() {
       console.log("emit to parent for creating new Item");
