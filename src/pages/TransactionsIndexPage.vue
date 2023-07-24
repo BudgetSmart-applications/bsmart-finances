@@ -1,5 +1,17 @@
 <template>
   <div class="q-ma-md">
+    <q-select
+      dense
+      emit-value
+      option-value="value"
+      option-label="label"
+      class="q-py-sm"
+      :options="bankNames"
+      outlined
+      v-model="bank"
+      label="Switch Bank Accounts"
+      @update:model-value="switchBank()"
+    />
     <div class="q-col-gutter-md row items-start">
       <div class="col-12">
         <data-table
@@ -150,11 +162,13 @@
 </template>
 
 <script>
-const d = new Date();
 import DataTable from "src/components/DataTable.vue";
 export default {
   components: { DataTable },
   name: "TransactionsIndexPage",
+  created() {
+
+  },
   computed: {
     filteredRow() {
       return this.bank_rows.filter((row) => {
@@ -171,8 +185,23 @@ export default {
       });
       return categoryNamesList.sort();
     },
+    bankNames() {
+      let bankNamesList = [];
+      this.bank_rows.forEach((b) => {
+        let bank = {
+          label: b.bank_name + " - " + b.account_name,
+          id: b.bank_id,
+        };
+        bankNamesList.push(bank);
+      });
+      return bankNamesList.sort();
+    },
   },
   methods: {
+    switchBank() {
+      console.log("switch bank ", this.bank);
+      this.$router.push('/transactions/' + this.bank.id);
+    },
     createItem() {
       console.log("emit to parent for creating new Item");
       this.date = "";
@@ -193,6 +222,7 @@ export default {
   },
   data() {
     return {
+      bank: "",
       date: "",
       amount: "",
       balance: "",
