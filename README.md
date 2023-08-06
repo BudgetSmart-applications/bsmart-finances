@@ -2,18 +2,18 @@
 
 Personal Management tools
 
-# Screenshots
+# Account Screenshots
 
 
 ## Welcome screen
 ![](src/pages/Docs/images/welcome-screen.png)
 
+## Accounts list
+![](src/pages/Docs/images/Accounts-list-screen.png)
+
 ## New Account
 
 ![](src/pages/Docs/images/create-new-account-screen.png)
-
-## Accounts list
-![](src/pages/Docs/images/Accounts-list-screen.png)
 
 ## Delete Account
 ![](src/pages/Docs/images/delete-confirmation-screen.png)
@@ -23,6 +23,7 @@ Personal Management tools
 
 ![](src/pages/Docs/images/update-opening-balance-screen.png)
 
+# Transaction Screenshots
 ## Transactions list
 ![](src/pages/Docs/images/transactions-list-screen.png)
 
