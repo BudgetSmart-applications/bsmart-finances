@@ -299,8 +299,8 @@
                 type="number"
                 mode="numeric"
                 outlined
-                v-model="bankObject.starting_balance"
-                label="Starting balance"
+                v-model="bankObject.amount"
+                label="Amount"
               />
             </div>
           </div>
@@ -348,7 +348,6 @@ export default {
           account_type: this.bankData.account_type,
           bank_name: this.bankData.bank_name,
           account_name: this.bankData.account_name,
-          starting_balance: this.bankData.starting_balance,
         };
       },
       deep: true,
@@ -358,12 +357,21 @@ export default {
       // console.log("date changed", val);
       let temp = val.split("/");
       let mon = "";
-      if (temp.length == 3) {
+      if (temp) {
         mon = temp[1];
-        console.log("month", mon);
-        let state = mon === 10 ? false : true;
-        console.log("state", state);
-        this.dateRange.October = state;
+        console.log("month", mon.toString());
+        this.dateRange.January = mon === '01' ?? false;
+        this.dateRange.February = mon === '02' ?? false;
+        this.dateRange.March = mon === '03' ?? false;
+        this.dateRange.April = mon === '04' ?? false;
+        this.dateRange.May = mon === '05' ?? false;
+        this.dateRange.June = mon === '06' ?? false;
+        this.dateRange.July = mon === '07' ?? false;
+        this.dateRange.August = mon === '08' ?? false;
+        this.dateRange.September = mon === '09' ?? false;
+        this.dateRange.October = mon === '10' ?? false;
+        this.dateRange.November = mon === '11' ?? false;
+        this.dateRange.December = mon === '12' ?? false;
       }
     },
   },
@@ -461,8 +469,23 @@ export default {
     },
     editItem(data) {
       console.log("edit transaction", data);
-      
-      this.showUpdateDialog = true;
+      this.showTransactionDialog = true;
+      this.date = data.date;
+      this.amount = data.amount;
+      this.income = data.income;
+      this.expense = data.expense;
+      this.name = data.name;
+      this.category = data.category;
+      this.memo = data.memo;
+      this.type = data.type;
+      this.locked = false;
+      this.icon = "unlock";
+      this.icon_label = "";
+      this.action = "Update";
+      console.log('bankdata',this.bankData)
+      this.bankObject.income = data.income;
+      this.action = "Update";
+      // this.showUpdateDialog = true;
     },
     createItem() {
       console.log("emit to parent for creating new Item");
@@ -484,6 +507,7 @@ export default {
   },
   data() {
     return {
+      action: "Update",
       bankData: {},
       options: ["Checking", "Savings"],
       accounting_year: ["2023"],
