@@ -1,8 +1,15 @@
 # Financial app (bsmart-applications)
 
+Personal Management tools
+
+## Screenshots
 
 
-Personal tools
+
+## Roadmap
+- Financial management
+- Shopping Lists
+
 
 ## Install the dependencies
 ```bash
