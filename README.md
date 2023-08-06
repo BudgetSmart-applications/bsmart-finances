@@ -15,23 +15,27 @@ Personal Management tools
 ## Accounts list
 ![](src/pages/Docs/images/Accounts-list-screen.png)
 
-
-
-## Delete confirmation
+## Delete Account
 ![](src/pages/Docs/images/delete-confirmation-screen.png)
 
 
-## Editing Opening Balance
+## Editing Account
 
 ![](src/pages/Docs/images/update-opening-balance-screen.png)
 
+## Transactions list
+![](src/pages/Docs/images/transactions-list-screen.png)
 
-## Update Transactions screen
+## New Transaction
+![](src/pages/Docs/images/new-transactions-screen.png)
+
+
+## Edit Transaction
 ![](src/pages/Docs/images/update-transaction-screen.png)
 
+## Delete Transaction
+![](src/pages/Docs/images/delete-transaction-screen.png)
 
-## Update Account
-![](src/pages/Docs/images/update-opening-balance-screen.png)
 
 
 ## Roadmap
