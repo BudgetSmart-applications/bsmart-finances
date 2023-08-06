@@ -231,15 +231,18 @@ export default {
   name: "TransactionsIndexPage",
   created() {
     this.transactions_row = this.transactions;
-    // prevents errors when param is 1
-    let temp = this.filteredRow[0];
-    if (!temp) return;
-    this.bank = {
-      id: temp.bank_id,
-      label: temp.bank_name + " - " + temp.account_name,
-    };
   },
   watch: {
+    "$route.params.bank_id": {
+      handler: function () {
+        let bankData = this.bank_rows.filter((row) => {
+          return row.bank_id === this.$route.params.bank_id ?? [];
+        });
+        this.transactions_row = bankData[0].transactions;
+      },
+      deep: true,
+      immediate: true,
+    },
     date: function (val) {
       // console.log("date changed", val);
       let temp = val.split("/");
@@ -247,7 +250,7 @@ export default {
       if (temp.length == 3) {
         mon = temp[1];
         console.log("month", mon);
-        let state = mon === 10 ? false : true
+        let state = mon === 10 ? false : true;
         console.log("state", state);
         this.dateRange.October = state;
       }
@@ -282,7 +285,18 @@ export default {
       return bankNamesList.sort();
     },
   },
+  mounted() {
+    this.loadTransactions();
+  },
   methods: {
+    loadTransactions() {
+      let temp = this.filteredRow[0];
+      if (!temp) return;
+      this.bank = {
+        id: temp.bank_id,
+        label: temp.bank_name + " - " + temp.account_name,
+      };
+    },
     saveNewAccount() {
       console.log("save new account");
       this.$store.dispatch("createTransaction", {
@@ -322,15 +336,14 @@ export default {
       this.showTransactionDialog = false;
     },
     switchBank() {
-      console.log("switch bank ", this.bank);
       this.$router.push("/transactions/" + this.bank.id);
     },
-    deleteItem(transaction){
+    deleteItem(transaction) {
       console.log("delete transaction", transaction);
       console.log("this.transactions", this.transactions);
       const filteredTransactions = this.transactions_row.filter(
         (t) => t.transaction_id !== transaction.transaction_id
-        );
+      );
       console.log("filteredTransactions", filteredTransactions);
       this.transactions_row = filteredTransactions;
       this.showCreateAccount = false;
