@@ -27,7 +27,7 @@ Personal Management tools
 ![](src/pages/Docs/images/transactions-list-screen.png)
 
 ## New Transaction
-![](src/pages/Docs/images/create-new-transactions-screen.png)
+![](src/pages/Docs/images/create-new-transaction-screen.png)
 
 
 ## Edit Transaction
