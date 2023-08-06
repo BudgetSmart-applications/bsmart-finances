@@ -238,7 +238,7 @@ export default {
         let bankData = this.bank_rows.filter((row) => {
           return row.bank_id === this.$route.params.bank_id ?? [];
         });
-        this.transactions_row = bankData[0].transactions;
+        this.transactions_row = bankData[0]?.transactions ?? [];
       },
       deep: true,
       immediate: true,
