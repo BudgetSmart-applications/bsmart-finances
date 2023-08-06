@@ -8,6 +8,9 @@ Personal Management tools
 ## Welcome screen
 ![](src/pages/Docs/images/welcome-screen.png)
 
+## New Account
+
+![](src/pages/Docs/images/create-new-account-screen.png)
 
 ## Accounts list
 ![](src/pages/Docs/images/Accounts-list-screen.png)
