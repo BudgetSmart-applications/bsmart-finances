@@ -28,9 +28,13 @@
       </template>
       <template v-slot:body-cell-actions="props">
         <q-td key="actions" :props="props">
-          <q-btn flat dense round @click="showConfirmationDialog(props.row)">
+          <q-btn v-if="props.row.category !='Starting Balance'" flat dense round @click="showConfirmationDialog(props.row)">
             <q-img src="/src/pages/icons/delete-trash.png" />
             <q-tooltip>Delete Account</q-tooltip>
+          </q-btn>
+          <q-btn v-else flat dense round>
+            <q-img src="/src/pages/icons/unable-to-delete.png" />
+            <q-tooltip>This transaction is locked and cannot be deleted</q-tooltip>
           </q-btn>
           <q-btn flat dense round @click="$emit('editItem', props.row)">
             <q-img src="/src/pages/icons/checking.png" />
