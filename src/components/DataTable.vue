@@ -40,7 +40,7 @@
             <q-img src="/src/pages/icons/checking.png" />
             <q-tooltip>Edit Account</q-tooltip>
           </q-btn>
-          <q-btn flat dense round @click="$emit('openItem', props.row)">
+          <q-btn v-if="singularTitle !== 'Transaction'" flat dense round @click="$emit('openItem', props.row)">
             <q-img src="/src/pages/icons/transactions.png" />
             <q-tooltip>Open transactions</q-tooltip>
           </q-btn>
