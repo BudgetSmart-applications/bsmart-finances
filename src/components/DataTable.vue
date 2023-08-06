@@ -59,8 +59,8 @@
               <p>
                 Delete:
                 <strong>
-                  {{ itemToDelete.account_name }} {{ singularTitle }} from
-                  {{ itemToDelete.bank_name }}
+                  {{ itemToDelete.account_name }}{{ itemToDelete.name }} {{ singularTitle }} <span v-if="itemToDelete.bank_name">from
+                  {{ itemToDelete.bank_name }}</span><span v-else>on {{ itemToDelete.date }}</span>
                 </strong>
               </p>
             </div>
@@ -126,6 +126,7 @@ export default defineComponent({
   },
   data() {
     return {
+      itemToDelete: {},
       confirmDelete: false,
       filter: "",
       pagination: {
