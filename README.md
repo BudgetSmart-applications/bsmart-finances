@@ -21,7 +21,7 @@ Personal Management tools
 ![](src/pages/Docs/images/delete-confirmation-screen.png)
 
 
-## Update Opening Balance
+## Editing Opening Balance
 
 ![](src/pages/Docs/images/update-opening-balance-screen.png)
 
