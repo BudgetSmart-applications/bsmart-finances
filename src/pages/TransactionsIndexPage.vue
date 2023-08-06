@@ -22,6 +22,7 @@
           @createItem="createItem"
           @deleteItem="deleteItem"
           @editItem="editItem"
+          @openBankItem="openUpdateDialog"
         />
       </div>
     </div>
@@ -296,8 +297,8 @@
               <q-input
                 dense
                 class="q-py-sm"
-                type="number"
-                mode="numeric"
+                type="text"
+                inputmode="decimal"
                 outlined
                 v-model="bankObject.amount"
                 label="Amount"
@@ -336,19 +337,31 @@ export default {
     this.transactions_row = this.transactions;
   },
   watch: {
+    dateRange: {
+      handler: function () {
+        this.updateRecurringTransactions();
+      },
+      deep: true,
+      immediate: true,
+    },
     "$route.params.bank_id": {
       handler: function () {
         let bankData = this.bank_rows.filter((row) => {
           return row.bank_id === this.$route.params.bank_id ?? [];
         });
         this.transactions_row = bankData[0]?.transactions ?? [];
-        this.bankData = bankData[0];
+        this.bankData = bankData[0] ?? [];
+        if (this.$route.params.bank_id === "1") {
+          this.bank = "";
+        }
         this.bankObject = {
           account_year: this.bankData.account_year,
           account_type: this.bankData.account_type,
           bank_name: this.bankData.bank_name,
           account_name: this.bankData.account_name,
+          amount: this.bankData.starting_balance,
         };
+        this.action = "Update";
       },
       deep: true,
       immediate: true,
@@ -360,18 +373,19 @@ export default {
       if (temp) {
         mon = temp[1];
         console.log("month", mon.toString());
-        this.dateRange.January = mon === '01' ?? false;
-        this.dateRange.February = mon === '02' ?? false;
-        this.dateRange.March = mon === '03' ?? false;
-        this.dateRange.April = mon === '04' ?? false;
-        this.dateRange.May = mon === '05' ?? false;
-        this.dateRange.June = mon === '06' ?? false;
-        this.dateRange.July = mon === '07' ?? false;
-        this.dateRange.August = mon === '08' ?? false;
-        this.dateRange.September = mon === '09' ?? false;
-        this.dateRange.October = mon === '10' ?? false;
-        this.dateRange.November = mon === '11' ?? false;
-        this.dateRange.December = mon === '12' ?? false;
+        this.dateRange.January = mon === "01" ?? false;
+        this.dateRange.February = mon === "02" ?? false;
+        this.dateRange.March = mon === "03" ?? false;
+        this.dateRange.April = mon === "04" ?? false;
+        this.dateRange.May = mon === "05" ?? false;
+        this.dateRange.June = mon === "06" ?? false;
+        this.dateRange.July = mon === "07" ?? false;
+        this.dateRange.August = mon === "08" ?? false;
+        this.dateRange.September = mon === "09" ?? false;
+        this.dateRange.October = mon === "10" ?? false;
+        this.dateRange.November = mon === "11" ?? false;
+        this.dateRange.December = mon === "12" ?? false;
+        this.updateRecurringTransactions();
       }
     },
   },
@@ -408,6 +422,138 @@ export default {
     this.loadTransactions();
   },
   methods: {
+    openUpdateDialog(item) {
+      console.log("openUpdateDialog", item);
+      this.showUpdateDialog = true;
+    },
+    updateRecurringTransactions() {
+      let temp = this.date.split("/");
+      let year = temp[0];
+      let month = temp[1];
+      let day = temp[2];
+      let recurringTransactions = [];
+      if (this.dateRange.January && month !== "01") {
+        recurringTransactions.push({
+          date: year + "/01/" + day,
+          amount: this.amount,
+          name: this.name,
+          category: this.category,
+          memo: this.memo,
+          type: this.type,
+        });
+      }
+      if (this.dateRange.February && month !== "02") {
+        recurringTransactions.push({
+          date: year + "/02/" + day,
+          amount: this.amount,
+          name: this.name,
+          category: this.category,
+          memo: this.memo,
+          type: this.type,
+        });
+      }
+      if (this.dateRange.March && month !== "03") {
+        recurringTransactions.push({
+          date: year + "/03/" + day,
+          amount: this.amount,
+          name: this.name,
+          category: this.category,
+          memo: this.memo,
+          type: this.type,
+        });
+      }
+      if (this.dateRange.April && month !== "04") {
+        recurringTransactions.push({
+          date: year + "/04/" + day,
+          amount: this.amount,
+          name: this.name,
+          category: this.category,
+          memo: this.memo,
+          type: this.type,
+        });
+      }
+      if (this.dateRange.May && month !== "01") {
+        recurringTransactions.push({
+          date: year + "/05/" + day,
+          amount: this.amount,
+          name: this.name,
+          category: this.category,
+          memo: this.memo,
+          type: this.type,
+        });
+      }
+      if (this.dateRange.June && month !== "01") {
+        recurringTransactions.push({
+          date: year + "/06/" + day,
+          amount: this.amount,
+          name: this.name,
+          category: this.category,
+          memo: this.memo,
+          type: this.type,
+        });
+      }
+      if (this.dateRange.July && month !== "01") {
+        recurringTransactions.push({
+          date: year + "/07/" + day,
+          amount: this.amount,
+          name: this.name,
+          category: this.category,
+          memo: this.memo,
+          type: this.type,
+        });
+      }
+      if (this.dateRange.August) {
+        recurringTransactions.push({
+          date: year + "/08/" + day,
+          amount: this.amount,
+          name: this.name,
+          category: this.category,
+          memo: this.memo,
+          type: this.type,
+        });
+      }
+      if (this.dateRange.September) {
+        recurringTransactions.push({
+          date: year + "/09/" + day,
+          amount: this.amount,
+          name: this.name,
+          category: this.category,
+          memo: this.memo,
+          type: this.type,
+        });
+      }
+      if (this.dateRange.October) {
+        recurringTransactions.push({
+          date: year + "/10/" + day,
+          amount: this.amount,
+          name: this.name,
+          category: this.category,
+          memo: this.memo,
+          type: this.type,
+        });
+      }
+      if (this.dateRange.November) {
+        recurringTransactions.push({
+          date: year + "/11/" + day,
+          amount: this.amount,
+          name: this.name,
+          category: this.category,
+          memo: this.memo,
+          type: this.type,
+        });
+      }
+      if (this.dateRange.December) {
+        recurringTransactions.push({
+          date: year + "/12/" + day,
+          amount: this.amount,
+          name: this.name,
+          category: this.category,
+          memo: this.memo,
+          type: this.type,
+        });
+      }
+      this.recurring_rows = recurringTransactions;
+    },
     loadTransactions() {
       let temp = this.filteredRow[0];
       if (!temp) return;
@@ -437,6 +583,25 @@ export default {
     },
     updateAccount() {
       console.log("update account");
+      // loop through all the transactions in recurring_rows and update the transactions array with that data
+      this.recurring_rows.forEach((row) => {
+        let createTrans = {
+          bank_id: this.bank.id,
+          date: row.date,
+          amount: row.amount,
+          balance: this.balance,
+          income: this.income,
+          expense: this.expense,
+          name: row.name,
+          category: row.category,
+          memo: row.memo,
+          type: row.type,
+          locked: this.locked,
+          icon: this.icon,
+          icon_label: this.icon_label,
+        };
+        this.transactions_row.push(createTrans);
+      });
       // this.$store.dispatch("updateTransaction", {
       //   bank_id: this.bank.id,
       //   date: this.date,
@@ -482,7 +647,7 @@ export default {
       this.icon = "unlock";
       this.icon_label = "";
       this.action = "Update";
-      console.log('bankdata',this.bankData)
+      console.log("bankdata", this.bankData);
       this.bankObject.income = data.income;
       this.action = "Update";
       // this.showUpdateDialog = true;

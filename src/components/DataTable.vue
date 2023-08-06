@@ -37,9 +37,9 @@
             <q-tooltip>Locked and cannot be deleted</q-tooltip>
           </q-btn>
 
-          <q-btn v-if="props.row.category === 'Starting Balance'" flat dense round>
-            <q-img src="/src/pages/icons/disabled-checking.png" />
-            <q-tooltip>Locked and cannot be edited</q-tooltip>
+          <q-btn v-if="props.row.category === 'Starting Balance'" flat dense round @click="$emit('openBankItem', props.row)">
+            <q-img src="/src/pages/icons/checking.png" />
+            <q-tooltip>Edit Starting transaction</q-tooltip>
           </q-btn>
           <q-btn v-else flat dense round @click="$emit('editItem', props.row)">
             <q-img src="/src/pages/icons/checking.png" />
