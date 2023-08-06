@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          {{ markup.name }}
+         BudgetSmart Applications
         </q-toolbar-title>
 
         <div>{{ markup.name }} v{{ markup.version }}</div>

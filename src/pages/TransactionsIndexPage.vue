@@ -18,8 +18,9 @@
           image="/src/pages/icons/transaction.png"
           title="Transactions"
           :columns="transactions_columns"
-          :rows="transactions"
+          :rows="transactions_row"
           @createItem="createItem"
+          @deleteItem="deleteItem"
         />
       </div>
     </div>
@@ -64,78 +65,140 @@
           <div class="q-pa-md shadow-24">
             <div>
               <div class="text-h5">{{ action }} {{ table_action }}</div>
-              <div style="max-width: 300px">
-                <q-input
-                  outlined
-                  dense
-                  v-model="date"
-                  label="Date (Year/Month/Day))"
-                  mask="date"
-                  :rules="['date']"
-                >
-                  <template v-slot:append>
-                    <q-icon name="event" class="cursor-pointer">
-                      <q-popup-proxy
-                        cover
-                        transition-show="scale"
-                        transition-hide="scale"
-                      >
-                        <q-date v-model="date">
-                          <div class="row items-center justify-end">
-                            <q-btn
-                              v-close-popup
-                              label="Close"
-                              color="primary"
+              <div class="q-col-gutter-md row items-start">
+                <div class="col-6">
+                  <div>
+                    <q-input
+                      outlined
+                      dense
+                      v-model="date"
+                      label="Date (Year/Month/Day))"
+                      mask="date"
+                      :rules="['date']"
+                    >
+                      <template v-slot:append>
+                        <q-icon name="event" class="cursor-pointer">
+                          <q-popup-proxy
+                            cover
+                            transition-show="scale"
+                            transition-hide="scale"
+                          >
+                            <q-date v-model="date">
+                              <div class="row items-center justify-end">
+                                <q-btn
+                                  v-close-popup
+                                  label="Close"
+                                  color="primary"
+                                />
+                              </div>
+                            </q-date>
+                          </q-popup-proxy>
+                        </q-icon>
+                      </template>
+                    </q-input>
+
+                    <q-select
+                      dense
+                      class="q-py-sm"
+                      :options="['income', 'expense']"
+                      outlined
+                      v-model="type"
+                      label="Transaction type"
+                    />
+                    <q-select
+                      dense
+                      class="q-py-sm"
+                      :options="filteredCategories"
+                      outlined
+                      v-model="category"
+                      label="Transaction category"
+                    />
+                    <q-input
+                      dense
+                      class="q-py-sm"
+                      outlined
+                      v-model="name"
+                      label="Transaction name"
+                    />
+                    <q-input
+                      dense
+                      class="q-py-sm"
+                      type="number"
+                      mode="numeric"
+                      outlined
+                      v-model="amount"
+                      label="Transaction amount"
+                    />
+
+                    <q-input
+                      type="textarea"
+                      dense
+                      class="q-py-sm"
+                      outlined
+                      v-model="memo"
+                      label="memo"
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="text-h5">Recurring Transactions</div>
+                  <div>
+                    <br />
+                    <div class="text-h5">Months</div>
+                    Select which months you'd like to duplicate. For example, if
+                    you want to create a recurring transaction for every month
+                    from January 2023 to December 2023 select all the months. If
+                    you want to create a recurring transaction for the month of
+                    January, March and October mark those months only.
+                    <div>
+                      <div class="q-gutter-sm">
+                        <div>
+                          <q-checkbox
+                            v-model="dateRange.January"
+                            label="January"
+                          />
+                          <q-checkbox
+                            v-model="dateRange.February"
+                            label="February"
+                          />
+                          <q-checkbox v-model="dateRange.March" label="March" />
+                          <q-checkbox v-model="dateRange.April" label="April" />
+                          <q-checkbox v-model="dateRange.May" label="May" />
+                          <q-checkbox v-model="dateRange.June" label="June" />
+                          <q-checkbox v-model="dateRange.July" label="July" />
+                          <q-checkbox
+                            v-model="dateRange.August"
+                            label="August"
+                          />
+                          <q-checkbox
+                            v-model="dateRange.September"
+                            label="September"
+                          />
+                          <q-checkbox
+                            v-model="dateRange.October"
+                            label="October"
+                          />
+                          <q-checkbox
+                            v-model="dateRange.November"
+                            label="November"
+                          />
+                          <q-checkbox
+                            v-model="dateRange.December"
+                            label="December"
+                          />
+                          <div>
+                            <q-table
+                              :rows="recurring_rows"
+                              :columns="recurring_columns"
+                              row-key="name"
                             />
                           </div>
-                        </q-date>
-                      </q-popup-proxy>
-                    </q-icon>
-                  </template>
-                </q-input>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              <q-select
-                dense
-                class="q-py-sm"
-                :options="['income', 'expense']"
-                outlined
-                v-model="type"
-                label="Transaction type"
-              />
-              <q-select
-                dense
-                class="q-py-sm"
-                :options="filteredCategories"
-                outlined
-                v-model="category"
-                label="Transaction category"
-              />
-              <q-input
-                dense
-                class="q-py-sm"
-                outlined
-                v-model="name"
-                label="Transaction name"
-              />
-              <q-input
-                dense
-                class="q-py-sm"
-                type="number"
-                mode="numeric"
-                outlined
-                v-model="amount"
-                label="Transaction amount"
-              />
-
-              <q-input
-                type="textarea"
-                dense
-                class="q-py-sm"
-                outlined
-                v-model="memo"
-                label="memo"
-              />
             </div>
           </div>
         </q-card-section>
@@ -167,14 +230,28 @@ export default {
   components: { DataTable },
   name: "TransactionsIndexPage",
   created() {
+    this.transactions_row = this.transactions;
+    // prevents errors when param is 1
     let temp = this.filteredRow[0];
-
-    console.log(temp)
     if (!temp) return;
     this.bank = {
       id: temp.bank_id,
-      label: temp.bank_name + ' - ' + temp.account_name,
+      label: temp.bank_name + " - " + temp.account_name,
     };
+  },
+  watch: {
+    date: function (val) {
+      // console.log("date changed", val);
+      let temp = val.split("/");
+      let mon = "";
+      if (temp.length == 3) {
+        mon = temp[1];
+        console.log("month", mon);
+        let state = mon === 10 ? false : true
+        console.log("state", state);
+        this.dateRange.October = state;
+      }
+    },
   },
   computed: {
     filteredRow() {
@@ -206,9 +283,57 @@ export default {
     },
   },
   methods: {
+    saveNewAccount() {
+      console.log("save new account");
+      this.$store.dispatch("createTransaction", {
+        bank_id: this.bank.id,
+        date: this.date,
+        amount: this.amount,
+        balance: this.balance,
+        income: this.income,
+        expense: this.expense,
+        name: this.name,
+        category: this.category,
+        memo: this.memo,
+        type: this.type,
+        locked: this.locked,
+        icon: this.icon,
+        icon_label: this.icon_label,
+      });
+      this.showTransactionDialog = false;
+    },
+    updateAccount() {
+      console.log("update account");
+      this.$store.dispatch("updateTransaction", {
+        bank_id: this.bank.id,
+        date: this.date,
+        amount: this.amount,
+        balance: this.balance,
+        income: this.income,
+        expense: this.expense,
+        name: this.name,
+        category: this.category,
+        memo: this.memo,
+        type: this.type,
+        locked: this.locked,
+        icon: this.icon,
+        icon_label: this.icon_label,
+      });
+      this.showTransactionDialog = false;
+    },
     switchBank() {
       console.log("switch bank ", this.bank);
       this.$router.push("/transactions/" + this.bank.id);
+    },
+    deleteItem(transaction){
+      console.log("delete transaction", transaction);
+      console.log("this.transactions", this.transactions);
+      const filteredTransactions = this.transactions_row.filter(
+        (t) => t.transaction_id !== transaction.transaction_id
+        );
+      console.log("filteredTransactions", filteredTransactions);
+      this.transactions_row = filteredTransactions;
+      this.showCreateAccount = false;
     },
     createItem() {
       console.log("emit to parent for creating new Item");
@@ -230,6 +355,21 @@ export default {
   },
   data() {
     return {
+      transactions_row: [],
+      dateRange: {
+        January: false,
+        February: false,
+        March: false,
+        April: false,
+        May: false,
+        June: false,
+        July: false,
+        August: false,
+        September: false,
+        October: false,
+        November: false,
+        December: false,
+      },
       bank: "",
       date: "",
       amount: "",
@@ -250,6 +390,12 @@ export default {
       showTransactionDialog: false,
 
       categories: [
+        {
+          name: "Income",
+          description: "Money earned from a job or other source",
+          iconUrl:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Income_icon.svg/1200px-Income_icon.svg.png",
+        },
         {
           name: "Rent",
           description: "Paying monthly rent for a living space",
@@ -826,6 +972,49 @@ export default {
             },
           ],
         },
+      ],
+      recurring_rows: [
+        {
+          date: "2023/01/01",
+          name: "Opening balance",
+          amount: "158214.31",
+        },
+        {
+          date: "2023/01/10",
+          name: "Washington State Payroll",
+          amount: "4132.50",
+        },
+        {
+          date: "2023/01/01",
+          name: "Opening balance",
+          amount: "158214.31",
+        },
+        {
+          date: "2023/01/10",
+          name: "Washington State Payroll",
+          amount: "4132.50",
+        },
+      ],
+      recurring_columns: [
+        {
+          name: "date",
+          required: true,
+          label: "Date",
+          align: "left",
+          field: (row) => row.date,
+          format: (val) => `${val}`,
+          sortable: true,
+        },
+        {
+          name: "name",
+          required: true,
+          label: "Name",
+          align: "left",
+          field: (row) => row.name,
+          format: (val) => `${val}`,
+          sortable: true,
+        },
+        { name: "amount", label: "Amount", field: "amount", sortable: true },
       ],
     };
   },
