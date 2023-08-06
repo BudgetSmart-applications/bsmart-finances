@@ -44,6 +44,14 @@
             <q-img src="/src/pages/icons/transactions.png" />
             <q-tooltip>Open transactions</q-tooltip>
           </q-btn>
+          <q-btn v-if="props.row.category !== 'Starting Balance'" flat dense round @click="alert('show duplicate dialog')">
+            <q-img src="/src/pages/icons/duplicate-or-copy.png" />
+            <q-tooltip>Duplicate this {{ props.row.name }} {{ singularTitle }}</q-tooltip>
+          </q-btn>
+          <q-btn flat dense round v-else>
+            <q-img src="/src/pages/icons/unable-to-duplicate-or-copy.png" />
+            <q-tooltip>This transaction is locked and cannot be duplicated</q-tooltip>
+          </q-btn>
         </q-td>
       </template>
     </q-table>
