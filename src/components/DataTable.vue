@@ -34,23 +34,33 @@
           </q-btn>
           <q-btn v-else flat dense round>
             <q-img src="/src/pages/icons/unable-to-delete.png" />
-            <q-tooltip>This transaction is locked and cannot be deleted</q-tooltip>
+            <q-tooltip>Locked and cannot be deleted</q-tooltip>
           </q-btn>
-          <q-btn flat dense round @click="$emit('editItem', props.row)">
+
+          <q-btn v-if="props.row.category === 'Starting Balance'" flat dense round>
+            <q-img src="/src/pages/icons/disabled-checking.png" />
+            <q-tooltip>Locked and cannot be edited</q-tooltip>
+          </q-btn>
+          <q-btn v-else flat dense round @click="$emit('editItem', props.row)">
             <q-img src="/src/pages/icons/checking.png" />
             <q-tooltip>Edit Account</q-tooltip>
           </q-btn>
+
+
+
           <q-btn v-if="singularTitle !== 'Transaction'" flat dense round @click="$emit('openItem', props.row)">
             <q-img src="/src/pages/icons/transactions.png" />
             <q-tooltip>Open transactions</q-tooltip>
           </q-btn>
+
+
           <q-btn v-if="props.row.category !== 'Starting Balance'" flat dense round @click="alert('show duplicate dialog')">
             <q-img src="/src/pages/icons/duplicate-or-copy.png" />
             <q-tooltip>Duplicate this {{ props.row.name }} {{ singularTitle }}</q-tooltip>
           </q-btn>
           <q-btn flat dense round v-else>
             <q-img src="/src/pages/icons/unable-to-duplicate-or-copy.png" />
-            <q-tooltip>This transaction is locked and cannot be duplicated</q-tooltip>
+            <q-tooltip>Locked and cannot be duplicated</q-tooltip>
           </q-btn>
         </q-td>
       </template>
