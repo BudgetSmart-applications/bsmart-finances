@@ -11,6 +11,7 @@
           @createItem="createItem"
           @deleteItem="deleteItem"
           @openItem="redirectToItem"
+          @doDuplicate="duplicateItem"
         />
       </div>
     </div>
@@ -127,6 +128,10 @@ export default {
   components: { DataTable },
   name: "AccountsIndexPage",
   methods: {
+    duplicateItem(item) {
+      console.log("duplicateItem() called");
+      console.log("item: ", item);
+    },
     redirectToItem(account){
       // this.$router.push({ name: "TransactionsIndexPage", params: { bank_id: account.bank_id } });
       this.$router.push('/transactions/' + account.bank_id);

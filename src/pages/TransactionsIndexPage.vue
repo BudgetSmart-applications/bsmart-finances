@@ -23,6 +23,7 @@
           @deleteItem="deleteItem"
           @editItem="editItem"
           @openBankItem="openUpdateDialog"
+          @doDuplicate="duplicateItem"
         />
       </div>
     </div>
@@ -422,6 +423,10 @@ export default {
     this.loadTransactions();
   },
   methods: {
+    duplicateItem(item) {
+      console.log("duplicateItem() called");
+      console.log("item: ", item);
+    },
     openUpdateDialog(item) {
       console.log("openUpdateDialog", item);
       this.showUpdateDialog = true;

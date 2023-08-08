@@ -16,7 +16,14 @@
           label="Switch View"
           @update:model-value="switchLogs()"
         />
-        <data-table image="/src/pages/icons/history.png" :rows="logMessages" :columns="columns" action="logs" title="Recent logs" />
+        <data-table
+          image="/src/pages/icons/history.png"
+          :rows="logMessages"
+          :columns="columns"
+          :action="action"
+          title="Recent logs"
+          @doDuplicate="duplicateItem"
+        />
       </div>
     </div>
   </div>
@@ -29,6 +36,7 @@ export default {
   name: "HistoryPage",
   data() {
     return {
+      action: "logs",
       tableTitle: "Recent logs",
       logs: [],
       columns: [
@@ -66,7 +74,7 @@ export default {
           field: "severity",
           align: "left",
           sortable: true,
-        }
+        },
       ],
       options: [
         {
@@ -86,25 +94,32 @@ export default {
         {
           label: "emergency",
           value: "emergency",
-        },{
+        },
+        {
           label: "alert",
           value: "emergency",
-        },{
+        },
+        {
           label: "critical",
           value: "emergency",
-        },{
+        },
+        {
           label: "error",
           value: "emergency",
-        },{
+        },
+        {
           label: "warning",
           value: "emergency",
-        },{
+        },
+        {
           label: "notice",
           value: "emergency",
-        },{
+        },
+        {
           label: "info",
           value: "emergency",
-        },{
+        },
+        {
           label: "debug",
           value: "emergency",
         },
@@ -121,13 +136,16 @@ export default {
         {
           label: "contact",
           value: "transactions-messages",
-        },{
+        },
+        {
           label: "file",
           value: "transactions-messages",
-        },{
+        },
+        {
           label: "mail",
           value: "transactions-messages",
-        },{
+        },
+        {
           label: "comment",
           value: "transactions-messages",
         },
@@ -138,58 +156,58 @@ export default {
           type: "Error",
           description: "Error message 1",
           operation: "save",
-          severity: "4"
+          severity: "4",
         },
         {
           updated: "2023-08-01 10:30:00",
           type: "Delete",
           description: "Delete transaction 1",
           operation: "delete",
-          severity: "1"
+          severity: "1",
         },
         {
           updated: "2023-08-01  13:40:00",
           type: "Edit",
           description: "Update transaction 2",
           operation: "edit",
-          severity: "1"
+          severity: "1",
         },
         {
           updated: "2023-08-01  13:40:00",
           type: "Login",
           description: "Failed login attempt",
           operation: "authentication",
-          severity: "3"
+          severity: "3",
         },
         {
           updated: "2023-08-01  13:40:00",
           type: "Create",
           description: "Create account Bank of America",
           operation: "create",
-          severity: "1"
+          severity: "1",
         },
         {
           updated: "2023-08-01  13:40:00",
           type: "Duplicate",
           description: "Duplicate Transaction",
           operation: "batch",
-          severity: "1"
+          severity: "1",
         },
         {
           updated: "2023-08-01  13:40:00",
           type: "Update",
           description: "Version change",
           operation: "update",
-          severity: "1"
+          severity: "1",
         },
         {
           updated: "2023-08-01  13:40:00",
           type: "Email",
           description: "Sending email to user",
           operation: "email",
-          severity: "1"
-        }
-      ]
+          severity: "1",
+        },
+      ],
     };
   },
   methods: {
@@ -203,7 +221,6 @@ export default {
       // fetch the logs
       // filter the logs
       // display the filtered logs
-
     },
   },
 };

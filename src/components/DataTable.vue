@@ -54,9 +54,7 @@
             <q-img src="/src/pages/icons/transactions.png" />
             <q-tooltip>Open transactions</q-tooltip>
           </q-btn>
-
-
-          <q-btn v-if="props.row.category !== 'Starting Balance'" flat dense round @click="alert('show duplicate dialog')">
+          <q-btn v-if="props.row.category !== 'Starting Balance'" flat dense round @click="$emit('doDuplicate', props.row)">
             <q-img src="/src/pages/icons/duplicate-or-copy.png" />
             <q-tooltip>Duplicate this {{ props.row.name }} {{ singularTitle }}</q-tooltip>
           </q-btn>
@@ -111,6 +109,10 @@ import { useFinanceStore } from "/src/stores/finances";
 export default defineComponent({
   name: "DataTableComponent",
   props: {
+    action: {
+      type: String,
+      default: "accounts",
+    },
     image: {
       type: String,
       default: "src/pages/icons/add-account.png",
