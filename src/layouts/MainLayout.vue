@@ -89,8 +89,8 @@ export default defineComponent({
         link: "/category",
       },
       {
-        title: "Settings",
-        caption: "Application settings",
+        title: "Configuration",
+        caption: "Configuration settings",
         image: "/src/pages/icons/settings-slider.png",
         link: "/settings",
       },
