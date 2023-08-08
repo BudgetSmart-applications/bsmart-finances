@@ -12,11 +12,13 @@
       :dense="$q.screen.lt.sm"
     >
       <template v-slot:top-left>
-        <q-btn color="primary" flat dense round @click="$emit('createItem')">
+        <q-btn v-if="action === 'logs'" color="primary"
+        flat dense round @click="$emit('createItem')">
           <q-img :src="image" />
           Add new
           <q-tooltip>Create new {{ title }}</q-tooltip>
         </q-btn>
+        <q-img :src="image" />
         <div class="text-h5">{{ title }}</div>
       </template>
       <template v-slot:top-right>

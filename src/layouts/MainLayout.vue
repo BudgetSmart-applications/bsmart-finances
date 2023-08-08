@@ -71,8 +71,8 @@ export default defineComponent({
         link: "/transactions/1",
       },
       {
-        title: "History & Logs",
-        caption: "Alerts, messages, logs & history",
+        title: "Recent Logs",
+        caption: "View events that have recently been logged",
         image: "/src/pages/icons/history.png",
         link: "/history",
       },
