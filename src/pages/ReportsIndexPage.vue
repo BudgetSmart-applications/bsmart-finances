@@ -21,6 +21,7 @@
           :rows="rows"
           image="/src/pages/icons/reports.png"
           :title="title"
+          :action="action"
         />
       </div>
     </div>
@@ -38,6 +39,7 @@ export default {
         type: Object,
         default: () => {},
       },
+      action: "",
       title: "",
       bank: "",
       bankData: {},
@@ -378,6 +380,7 @@ export default {
   methods: {
     switchBank() {
       this.title = this.bank.label;
+      this.action = 'reports'
     },
   },
   computed: {

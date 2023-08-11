@@ -16,7 +16,7 @@ const routes = [
       { path: '/read-online', component: () => import('src/pages/Docs/ReadOnlinePage.vue') },
       { path: '/watch-video', component: () => import('src/pages/Docs/WatchVideoPage.vue') },
 
-
+    { path: '/contacts',                component: () => import('src/pages/ContactIndexPage.vue') },
 
       { path: '/about',        component: () => import('src/pages/AboutBSmartPage.vue') },
       { path: '/account-table', component: () => import('components/AccountTable.vue') },
@@ -52,7 +52,7 @@ const routes = [
       { path: '/view-category/:category_id',   component: () => import('pages/Category/CategoryDetailsPage.vue') },
       { path: '/delete-category/:category_id', component: () => import('pages/Category/CategoryDeletionPage.vue') },
 
-      { path: '/contacts',                component: () => import('src/pages/ContactIndexPage.vue') },
+
       { path: '/view-contacts',           component: () => import('pages/Contacts/ViewContactsPage.vue') },
       { path: '/add-contact',             component: () => import('pages/Contacts/AddContactPage.vue') },
       { path: '/edit-contact/:contact_id',   component: () => import('pages/Contacts/EditContactPage.vue') },

@@ -89,6 +89,12 @@ export default defineComponent({
         link: "/category",
       },
       {
+        title: "Contacts",
+        caption: "Category management",
+        image: "/src/pages/icons/groups-of-people.png",
+        link: "/contacts",
+      },
+      {
         title: "Configuration",
         caption: "Configuration settings",
         image: "/src/pages/icons/settings-slider.png",
