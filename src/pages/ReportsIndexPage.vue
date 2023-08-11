@@ -20,7 +20,7 @@
           :columns="columns"
           :rows="rows"
           image="/src/pages/icons/reports.png"
-          title="Reports"
+          :title="title"
         />
       </div>
     </div>
@@ -38,44 +38,105 @@ export default {
         type: Object,
         default: () => {},
       },
+      title: "",
       bank: "",
       bankData: {},
       rows: [
         {
           id: 1,
-          name: "Category 1",
-          description: "Category 1 description",
+          month: "January",
+          year: "2023",
         },
         {
           id: 2,
-          name: "Category 2",
-          description: "Category 2 description",
+          month: "February",
+          year: "2023",
         },
         {
           id: 3,
-          name: "Category 3",
-          description: "Category 3 description",
+          month: "March",
+          year: "2023",
         },
+        {
+          id: 4,
+          month: "April",
+          year: "2023",
+        },
+        {
+          id: 5,
+          month: "May",
+          year: "2023",
+        },
+        {
+          id: 6,
+          month: "June",
+          year: "2023",
+        },
+        {
+          id: 7,
+          month: "July",
+          year: "2023",
+        },
+        {
+          id: 8,
+          month: "August",
+          year: "2023",
+        },
+        {
+          id: 9,
+          month: "September",
+          year: "2023",
+        },
+        {
+          id: 10,
+          month: "October",
+          year: "2023",
+        },
+        {
+          id: 11,
+          month: "November",
+          year: "2023",
+        },
+        {
+          id: 12,
+          month: "December",
+          year: "2023",
+        },
+        {
+          id: 13,
+          month: "January",
+          year: "2024",
+        },
+        {
+          id: 14,
+          month: "February",
+          year: "2024",
+        },
+        {
+          id: 15,
+          month: "March",
+          year: "2024",
+        }
       ],
       columns: [
         {
           name: "id",
-          label: "ID",
+          label: "Report ID",
           field: "id",
           align: "left",
           sortable: true,
         },
         {
-          name: "name",
-          label: "Name",
-          field: "name",
+          name: "month",
+          label: "Month",
+          field: "month",
           align: "left",
           sortable: true,
         },
         {
-          name: "description",
-          label: "Description",
-          field: "description",
+          name: "year",
+          label: "Year",
+          field: "year",
           align: "left",
           sortable: true,
         },
@@ -85,23 +146,6 @@ export default {
           field: "actions",
           align: "left",
           sortable: false,
-        },
-      ],
-      rows: [
-        {
-          id: 1,
-          name: "Category 1",
-          description: "Category 1 description",
-        },
-        {
-          id: 2,
-          name: "Category 2",
-          description: "Category 2 description",
-        },
-        {
-          id: 3,
-          name: "Category 3",
-          description: "Category 3 description",
         },
       ],
       bank_rows: [
@@ -330,6 +374,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    switchBank() {
+      this.title = this.bank.label;
+    },
   },
   computed: {
     bankNames() {

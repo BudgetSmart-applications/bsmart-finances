@@ -18,8 +18,8 @@
           Add new
           <q-tooltip>Create new {{ title }}</q-tooltip>
         </q-btn>
-        <q-img :src="image" />
-        <div class="text-h5">{{ title }}</div>
+        <q-img :src="image" width="63px" />
+        <div class="text-6"><span v-if="title">Reports for </span>{{ title }}</div>
       </template>
       <template v-slot:top-right>
         <q-input dense debounce="300" v-model="filter" placeholder="Search">
