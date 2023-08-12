@@ -90,8 +90,8 @@
               <q-input
                 dense
                 class="q-py-sm"
-                type="number"
-                mode="numeric"
+                type="text"
+                mode="decimal"
                 outlined
                 v-model="starting_balance"
                 label="Starting balance"
@@ -132,6 +132,21 @@ export default {
     duplicateItem(item) {
       console.log("duplicateItem() called");
       console.log("item: ", item);
+      this.showCreateAccount = true;
+      this.showUpdate = false;
+      this.bank_name = item.bank_name;
+      this.account_name = "";
+      this.account_type = "";
+      this.starting_balance = "";
+      this.bank_routing = "";
+      this.bank_acronym = "";
+      this.account_number = "";
+      this.account_year = "2023";
+      this.contact_name = "";
+      this.contact_email = "";
+      this.contact_phone = "";
+      this.contact_memo = "";
+      this.action = "Create";
     },
     redirectToItem(account){
       // this.$router.push({ name: "TransactionsIndexPage", params: { bank_id: account.bank_id } });
