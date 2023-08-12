@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-         BudgetSmart Applications
+         <span style="font-size: 1em;">BudgetSmart Applications</span>
         </q-toolbar-title>
 
         <div>{{ markup.name }} v{{ markup.version }}</div>
@@ -101,10 +101,10 @@ export default defineComponent({
         link: "/settings",
       },
       {
-        title: "Help",
-        caption: "Help, tutorials & support",
-        image: "/src/pages/icons/help.png",
-        link: "/help",
+        title: "About",
+        caption: "BudgetSmart information",
+        image: "/src/pages/icons/covers/BudgetSmartLogo.png",
+        link: "/about",
       }
     ]
 
