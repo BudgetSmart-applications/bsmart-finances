@@ -28,7 +28,7 @@ const routes = [
         path: "/settings",
         component: () => import("src/pages/SettingsIndexPage.vue"),
       },
-      { path: "/help", component: () => import("src/pages/HelpPage.vue") },
+      { path: "about", component: () => import("src/pages/AboutPage.vue") },
       {
         path: "/watch-video",
         component: () => import("src/pages/Docs/WatchVideoPage.vue"),
@@ -76,7 +76,7 @@ const routes = [
         path: "/settings",
         component: () => import("src/pages/SettingsIndexPage.vue"),
       },
-      { path: "/help", component: () => import("src/pages/HelpPage.vue") },
+      { path: "/help", component: () => import("src/pages/AboutPage.vue") },
 
       {
         path: "/read-online",

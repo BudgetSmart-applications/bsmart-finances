@@ -25,7 +25,6 @@ export default {
   name: "AboutDialog",
   data() {
     return {
-      dialog: true,
       alert: true,
     };
   },

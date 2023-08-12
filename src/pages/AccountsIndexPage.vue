@@ -1,5 +1,5 @@
 <template>
-  <div class="q-ma-md">
+  <div>
     <div class="q-col-gutter-md row items-start">
       <div class="col-12">
         <data-table
@@ -7,6 +7,7 @@
           title="Accounts"
           :columns="bank_columns"
           :rows="bank_rows"
+          action="accounts"
           @editItem="editItem"
           @createItem="createItem"
           @deleteItem="deleteItem"

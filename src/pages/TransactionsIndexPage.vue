@@ -1,5 +1,5 @@
 <template>
-  <div class="q-ma-md">
+  <div>
     <q-select
       dense
       emit-value
