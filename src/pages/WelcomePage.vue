@@ -55,7 +55,7 @@ export default defineComponent({
   methods: {
     readOnline() {
       // ReadOnlinePage.vue
-      this.$router.push("/read-online");
+      this.$router.push("/read-online/toc");
     },
     watchVideo() {
       // WatchVideoPage.vue

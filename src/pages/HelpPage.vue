@@ -3,7 +3,7 @@
     <div class="text-h4">Help, tutorials & support</div>
     <div class="q-col-gutter-md row items-start">
       <div class="col-4">
-        <q-img class="cursor-pointer" src="src/pages/icons/help.png"> </q-img>
+        <q-img class="cursor-pointer" style="max-width: 63%;" src="src/pages/icons/help.png"> </q-img>
       </div>
       <div class="col-8">
         <div class="q-col-gutter-md row items-start">
