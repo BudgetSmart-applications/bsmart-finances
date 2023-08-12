@@ -2,43 +2,41 @@
   <q-page>
     <div>
       <div class="q-pa-md">
-        <h1 class="text-h4">Getting Started</h1>
-        <p class="text-subtitle1">
-          How would you like to learn? Choose a path below.
-        </p>
-
-        <div class="q-col-gutter-md row items-start">
+        <div class="text-h3">Quick Start</div>
+          <div class="q-col-gutter-md row items-start">
           <div class="col-6">
-            <div class="text-h3">Quick Start Tutorials</div>
-            <p class="q-mt-lg">
-              The quickstart tutorials contain documents and videos explaining
-              how to use BudgetSmart.
-            </p>
-            <div class="text-h6">Online User Manuals</div>
-          </div>
-          <div class="col-3">
             <q-img
               class="cursor-pointer"
-              src="src/pages/icons/read.png"
+              src="/src/pages/icons/read.png"
               @click="readOnline"
             >
-              <div class="absolute-bottom text-subtitle1 text-center">Read</div>
+              <div class="absolute-bottom text-subtitle1 text-center">User Guide</div>
             </q-img>
           </div>
-
-          <div class="col-3">
+          <div class="col-6">
             <q-img
               class="cursor-pointer"
-              src="src/pages/icons/watch.png"
+              src="/src/pages/icons/watch.png"
               @click="watchVideo"
             >
               <div class="absolute-bottom text-subtitle1 text-center">
-                Watch
+                Videos
               </div>
             </q-img>
           </div>
         </div>
         <q-separator />
+        <div class="q-col-gutter-md row items-start"></div>
+        <div class="col-6">
+          <q-img
+          style="max-width: 50%;"
+            class="cursor-pointer"
+            src="/src/pages/icons/account.png"
+            @click="$router.push('/accounts')"
+          >
+            <div class="absolute-bottom text-subtitle1 text-center">Go to the App</div>
+          </q-img>
+        </div>
       </div>
     </div>
   </q-page>
