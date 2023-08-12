@@ -1,11 +1,14 @@
 <template>
+  <about-dialog />
   <router-view />
 </template>
 
 <script>
 import { defineComponent } from 'vue'
+import AboutDialog from './components/AboutDialog.vue'
 
 export default defineComponent({
+  components: { AboutDialog },
   name: 'App'
 })
 </script>
