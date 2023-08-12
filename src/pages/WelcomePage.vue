@@ -1,41 +1,56 @@
 <template>
   <q-page>
     <div>
-      <div class="q-pa-md">
-        <div class="text-h3">Quick Start</div>
-          <div class="q-col-gutter-md row items-start">
+      <div>
+        <div class="q-col-gutter-md q-mb-md row items-start">
           <div class="col-6">
             <q-img
-              class="cursor-pointer"
-              src="/src/pages/icons/read.png"
+              @click="goToAccounting"
+              style="border: 1px solid #ccc"
+              src="/src/pages/icons/covers/quickstart-go-to-accounts.png"
+              alt="getting started cover image"
+            />
+          </div>
+          <div class="col-6">
+            <q-img
               @click="readOnline"
-            >
-              <div class="absolute-bottom text-subtitle1 text-center">User Guide</div>
-            </q-img>
+              style="border: 1px solid #ccc"
+              src="/src/pages/icons/covers/quickstart-guide.png"
+              alt="getting started cover image"
+            />
           </div>
           <div class="col-6">
             <q-img
-              class="cursor-pointer"
-              src="/src/pages/icons/watch.png"
-              @click="watchVideo"
-            >
-              <div class="absolute-bottom text-subtitle1 text-center">
-                Videos
-              </div>
-            </q-img>
+              style="border: 1px solid #ccc"
+              src="/src/pages/icons/covers/quickstart-online-manual.png"
+              alt="getting started cover image"
+            />
           </div>
-        </div>
-        <q-separator />
-        <div class="q-col-gutter-md row items-start"></div>
-        <div class="col-6">
-          <q-img
-          style="max-width: 50%;"
-            class="cursor-pointer"
-            src="/src/pages/icons/account.png"
-            @click="$router.push('/accounts')"
-          >
-            <div class="absolute-bottom text-subtitle1 text-center">Go to the App</div>
-          </q-img>
+          <div class="col-6">
+            <q-img
+              style="border: 1px solid #ccc"
+              src="/src/pages/icons/covers/quickstart-watch-videos.png"
+              alt="getting started cover image"
+            />
+          </div>
+
+          <div class="col-6">
+            <q-img
+              style="border: 1px solid #ccc"
+              src="/src/pages/icons/covers/settings-backups.png"
+              alt="getting started cover image"
+            />
+          </div>
+
+          <div class="col-6">
+            <q-img
+              style="border: 1px solid #ccc"
+              src="/src/pages/icons/covers/settings-importing.png"
+              alt="getting started cover image"
+            />
+          </div>
+
+
         </div>
       </div>
     </div>
@@ -57,23 +72,23 @@ export default defineComponent({
     },
     watchVideo() {
       // WatchVideoPage.vue
-      this.$router.push("/watch-video");
+      this.$router.push("/read-online/watch-video");
     },
     goToAccounting() {
       // Go directly to the Accounting table
-      this.$router.push("/accounting-view");
+      this.$router.push("/accounts");
     },
     goToTransactions() {
       // Go directly to the Transactions table
-      this.$router.push("/transactions-view");
+      this.$router.push("/read-online/transactions");
     },
     goToBackups() {
       // Go directly to the Backups page
-      this.$router.push("/backups-view");
+      this.$router.push("/read-online/backups");
     },
     goToImporting() {
       // Go directly to the imports page
-      this.$router.push("/import-csv-view");
+      this.$router.push("/read-online/import-csv-view");
     },
   },
   setup() {
@@ -84,3 +99,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.q-img {
+  cursor: pointer;
+}
+</style>

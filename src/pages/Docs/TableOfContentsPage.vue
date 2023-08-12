@@ -1,96 +1,87 @@
 <template>
   <div>
-<router-link to="/read-online/terms">BudgetSmart Terminology</router-link>
+    {{ count }}
+    <q-btn :disable="!showPreviousButton" @click="decrementCount">{{ previousText }}</q-btn><q-btn :disable="!showNextButton" @click="incrementCount">{{ nextText }}</q-btn>
+    <cover-component v-if="count === 0"/>
+    <library-links-page v-if="count === 1"/>
+    <h1 v-if="count === 2">Learn to create Accounts</h1>
+    <h1 v-if="count === 3">Learn to enter Transactions</h1>
   </div>
 </template>
 
 <script>
-  export default {
-    name: "TableOfContentsPage",
-    data() {
-      return {};
+import LibraryLinksPage from '/src/pages/Docs/components/LibraryLinksPage.vue';
+import CoverComponent from "/src/pages/Docs/components/CoverComponent.vue";
+export default {
+  name: "TableOfContentsPage",
+  components: {
+    CoverComponent,
+    LibraryLinksPage,
+  },
+  data() {
+    return {
+      previousText: "Go forward",
+      nextText: "Table of Contents",
+      count: 0,
+      showPreviousButton: false,
+      showNextButton: true,
+      pages: [
+        {
+          title: "Cover Page"
+        },
+        {
+          title: "Table of Contents"
+        },
+        {
+          title: "Creating Accounts"
+        },
+        {
+          title: "Entering Transactions"
+        },
+      ],
+    };
+  },
+  methods: {
+    setNavigationButtons(){
+      if (this.count === 0) {
+        this.previousText = "Go forward"
+        this.nextText = "Table of Contents"
+        this.showPreviousButton = false;
+      }
+      if (this.count === 1) {
+        this.previousText = "Go back"
+        this.previousText = this.pages[this.count -1].title
+        this.nextText = this.pages[this.count +1].title
+      }
+      if (this.count === 2) {
+        this.previousText = "Go back"
+        this.previousText = this.pages[this.count -1].title
+        this.nextText = this.pages[this.count +1].title
+      }
+      if (this.count === 3) {
+        this.previousText = "Go back"
+        this.previousText = this.pages[this.count -1].title
+        this.nextText = "Go back"
+        this.showNextButton = false;
+      }
     },
-    methods: {
-      goToAccounting() {
-        // Go directly to the Accounting table
-        this.$router.push("/accounting-view");
-      },
-      goToTransactions() {
-        // Go directly to the Transactions table
-        this.$router.push("/transactions-view");
-      },
-      goToBackups() {
-        // Go directly to the Backups page
-        this.$router.push("/backups-view");
-      },
-      goToImporting() {
-        // Go directly to the imports page
-        this.$router.push("/importing-view");
-      },
-      goToSettings() {
-        // Go directly to the Settings page
-        this.$router.push("/settings-view");
-      },
-      goToHelp() {
-        // Go directly to the Help page
-        this.$router.push("/help-view");
-      },
-      goToAbout() {
-        // Go directly to the About page
-        this.$router.push("/about-view");
-      },
-      goToWelcome() {
-        // Go directly to the Welcome page
-        this.$router.push("/welcome-view");
-      },
-      goToReadOnline() {
-        // Go directly to the Read Online page
-        this.$router.push("/read-online/toc");
-      },
-      goToWatchVideo() {
-        // Go directly to the Watch Video page
-        this.$router.push("/watch-video");
-      },
-      goToAccounting() {
-        // Go directly to the Accounting table
-        this.$router.push("/accounting-view");
-      },
-      goToTransactions() {
-        // Go directly to the Transactions table
-        this.$router.push("/transactions-view");
-      },
-      goToBackups() {
-        // Go directly to the Backups page
-        this.$router.push("/backups-view");
-      },
-      goToImporting() {
-        // Go directly to the imports page
-        this.$router.push("/importing-view");
-      },
-      goToSettings() {
-        // Go directly to the Settings page
-        this.$router.push("/settings-view");
-      },
-      goToHelp() {
-        // Go directly to the Help page
-        this.$router.push("/help-view");
-      },
-      goToAbout() {
-        // Go directly to the About page
-        this.$router.push("/about-view");
-      },
-      goToWelcome() {
-        // Go directly to the Welcome page
-        this.$router.push("/welcome-view");
-      },
-      goToReadOnline() {
-        // Go directly to the Read Online page
-        this.$router.push("/read-online/toc");
-      },
-      goToWatchVideo() {
-        // Go directly to the Watch Video page
-        this.$router.push("/watch-video");
-      },
+    incrementCount() {
+      this.count++;
+      this.showPreviousButton = true;
+      this.setNavigationButtons()
     },
-  }
+    decrementCount() {
+      this.count--;
+      this.showNextButton = true;
+      this.setNavigationButtons()
+    },
+    readOnline() {
+      this.$q.notify({
+        message: "This feature is not yet available.",
+        color: "negative",
+        icon: "report_problem",
+      });
+    },
+  },
+};
 </script>
