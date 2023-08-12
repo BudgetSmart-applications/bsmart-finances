@@ -1,7 +1,8 @@
 <template>
   <div>
-    {{ count }}
-    <q-btn :disable="!showPreviousButton" @click="decrementCount">{{ previousText }}</q-btn><q-btn :disable="!showNextButton" @click="incrementCount">{{ nextText }}</q-btn>
+    <q-btn icon="arrow_back_ios" color="secondary" class="q-ma-sm" :disable="!showPreviousButton" @click="decrementCount">{{ previousText }}</q-btn>
+    <q-btn color="negative" class="q-ma-sm" :disable="count <= 1" @click="count = 1"><span v-if="count > 1">Table of Contents</span></q-btn>
+    <q-btn icon-right="arrow_forward_ios" class="q-ma-sm" color="secondary" :disable="!showNextButton" @click="incrementCount">{{ nextText }}</q-btn>
     <cover-component v-if="count === 0"/>
     <library-links-page v-if="count === 1"/>
     <h1 v-if="count === 2">Learn to create Accounts</h1>
