@@ -1,9 +1,13 @@
 <template>
   <div>
-    <div class="q-col-gutter-md row items-start  q-py-sm">
+    <div class="q-col-gutter-md row items-start q-py-sm">
       <div class="col-2">
-        <q-btn icon="arrow_back"
-        color="secondary" @click="goBack" label="Back" />
+        <q-btn
+          icon="arrow_back"
+          color="secondary"
+          @click="goBack"
+          label="Back"
+        />
       </div>
       <div class="col-10">
         <q-select
@@ -20,7 +24,6 @@
       </div>
     </div>
     <div class="q-col-gutter-md row items-start">
-
       <div class="col-12">
         <data-table
           image="/src/pages/icons/transaction.png"
@@ -296,42 +299,96 @@
             <div class="col-6">
               <div class="text-h5">Recurring Transactions</div>
               <div>
-                <br />
-                <div class="text-h5">Months</div>
-                Select which months you'd like to duplicate. For example, if you
-                want to create a recurring transaction for every month from
-                January 2023 to December 2023 select all the months. If you want
-                to create a recurring transaction for the month of January,
-                March and October mark those months only.
                 <div>
                   <div class="q-gutter-sm">
                     <div>
-                      <q-checkbox v-model="dateRange.January" label="January" />
                       <q-checkbox
+                        @update:model-value="
+                          postRecurringTransaction('01', 'January')
+                        "
+                        v-model="dateRange.January"
+                        label="January"
+                      />
+                      <q-checkbox
+                        @update:model-value="
+                          postRecurringTransaction('02', 'February')
+                        "
                         v-model="dateRange.February"
                         label="February"
                       />
-                      <q-checkbox v-model="dateRange.March" label="March" />
-                      <q-checkbox v-model="dateRange.April" label="April" />
-                      <q-checkbox v-model="dateRange.May" label="May" />
-                      <q-checkbox v-model="dateRange.June" label="June" />
-                      <q-checkbox v-model="dateRange.July" label="July" />
-                      <q-checkbox v-model="dateRange.August" label="August" />
                       <q-checkbox
+                        @update:model-value="
+                          postRecurringTransaction('03', 'March')
+                        "
+                        v-model="dateRange.March"
+                        label="March"
+                      />
+                      <q-checkbox
+                        @update:model-value="
+                          postRecurringTransaction('04', 'April')
+                        "
+                        v-model="dateRange.April"
+                        label="April"
+                      />
+                      <q-checkbox
+                        @update:model-value="
+                          postRecurringTransaction('05', 'May')
+                        "
+                        v-model="dateRange.May"
+                        label="May"
+                      />
+                      <q-checkbox
+                        @update:model-value="
+                          postRecurringTransaction('06', 'June')
+                        "
+                        v-model="dateRange.June"
+                        label="June"
+                      />
+                      <q-checkbox
+                        @update:model-value="
+                          postRecurringTransaction('07', 'July')
+                        "
+                        v-model="dateRange.July"
+                        label="July"
+                      />
+                      <q-checkbox
+                        @update:model-value="
+                          postRecurringTransaction('08', 'August')
+                        "
+                        v-model="dateRange.August"
+                        label="August"
+                      />
+                      <q-checkbox
+                        @update:model-value="
+                          postRecurringTransaction('09', 'September')
+                        "
                         v-model="dateRange.September"
                         label="September"
                       />
-                      <q-checkbox v-model="dateRange.October" label="October" />
                       <q-checkbox
+                        @update:model-value="
+                          postRecurringTransaction('10', 'October')
+                        "
+                        v-model="dateRange.October"
+                        label="October"
+                      />
+                      <q-checkbox
+                        @update:model-value="
+                          postRecurringTransaction('11', 'November')
+                        "
                         v-model="dateRange.November"
                         label="November"
                       />
                       <q-checkbox
+                        @update:model-value="
+                          postRecurringTransaction('12', 'December')
+                        "
                         v-model="dateRange.December"
                         label="December"
                       />
                       <div>
                         <q-table
+                        dense
                           :rows="recurring_rows"
                           :columns="recurring_columns"
                           row-key="name"
@@ -348,8 +405,8 @@
           <q-btn
             class="q-ma-sm"
             color="negative"
-            @click="$emit('deleteAccount', bankObject)"
-            >Delete</q-btn
+            @click="makeRecuringTransactions"
+            >Create</q-btn
           >
           <q-btn color="primary" label="Cancel" v-close-popup />
         </q-card-actions>
@@ -370,7 +427,7 @@ export default {
   watch: {
     dateRange: {
       handler: function () {
-        this.updateRecurringTransactions();
+        // this.updateRecurringTransactions();
       },
       deep: true,
       immediate: true,
@@ -399,25 +456,13 @@ export default {
     },
     date: function (val) {
       // console.log("date changed", val);
-      let temp = val.split("/");
-      let mon = "";
-      if (temp) {
-        mon = temp[1];
-        console.log("month", mon.toString());
-        this.dateRange.January = mon === "01" ?? false;
-        this.dateRange.February = mon === "02" ?? false;
-        this.dateRange.March = mon === "03" ?? false;
-        this.dateRange.April = mon === "04" ?? false;
-        this.dateRange.May = mon === "05" ?? false;
-        this.dateRange.June = mon === "06" ?? false;
-        this.dateRange.July = mon === "07" ?? false;
-        this.dateRange.August = mon === "08" ?? false;
-        this.dateRange.September = mon === "09" ?? false;
-        this.dateRange.October = mon === "10" ?? false;
-        this.dateRange.November = mon === "11" ?? false;
-        this.dateRange.December = mon === "12" ?? false;
-        this.updateRecurringTransactions();
-      }
+      // let temp = val.split("/");
+      // let mon = "";
+      // if (temp) {
+      //   mon = temp[1];
+      //   this.enableRecurringMonths(temp[1])
+      //   this.updateRecurringTransactions();
+      // }
     },
   },
   computed: {
@@ -453,24 +498,9 @@ export default {
     this.loadTransactions();
   },
   methods: {
-    goBack() {
-      this.$router.go(-1);
-    },
-    duplicateItem(item) {
-      console.log("duplicateItem() called");
-      console.log("item: ", item);
-    },
-    openUpdateDialog(item) {
-      console.log("openUpdateDialog", item);
-      this.showUpdateDialog = true;
-    },
-    updateRecurringTransactions() {
-      let temp = this.date.split("/");
-      let year = temp[0];
-      let month = temp[1];
-      let day = temp[2];
+    insertRecurringTransaction(year, day) {
       let recurringTransactions = [];
-      if (this.dateRange.January && month !== "01") {
+      if (this.dateRange.January) {
         recurringTransactions.push({
           date: year + "/01/" + day,
           amount: this.amount,
@@ -480,7 +510,7 @@ export default {
           type: this.type,
         });
       }
-      if (this.dateRange.February && month !== "02") {
+      if (this.dateRange.February) {
         recurringTransactions.push({
           date: year + "/02/" + day,
           amount: this.amount,
@@ -490,7 +520,7 @@ export default {
           type: this.type,
         });
       }
-      if (this.dateRange.March && month !== "03") {
+      if (this.dateRange.March) {
         recurringTransactions.push({
           date: year + "/03/" + day,
           amount: this.amount,
@@ -500,7 +530,7 @@ export default {
           type: this.type,
         });
       }
-      if (this.dateRange.April && month !== "04") {
+      if (this.dateRange.April) {
         recurringTransactions.push({
           date: year + "/04/" + day,
           amount: this.amount,
@@ -510,7 +540,7 @@ export default {
           type: this.type,
         });
       }
-      if (this.dateRange.May && month !== "01") {
+      if (this.dateRange.May) {
         recurringTransactions.push({
           date: year + "/05/" + day,
           amount: this.amount,
@@ -520,7 +550,7 @@ export default {
           type: this.type,
         });
       }
-      if (this.dateRange.June && month !== "01") {
+      if (this.dateRange.June) {
         recurringTransactions.push({
           date: year + "/06/" + day,
           amount: this.amount,
@@ -530,7 +560,7 @@ export default {
           type: this.type,
         });
       }
-      if (this.dateRange.July && month !== "01") {
+      if (this.dateRange.July) {
         recurringTransactions.push({
           date: year + "/07/" + day,
           amount: this.amount,
@@ -590,7 +620,116 @@ export default {
           type: this.type,
         });
       }
-      this.recurring_rows = recurringTransactions;
+      // this.recurring_rows = recurringTransactions;
+    },
+    makeRecuringTransactions() {
+      console.log("makeRecuringTransactions() called");
+      console.log("this.recurring_rows: ", this.recurring_rows);
+      console.log("transactions_row", this.transactions_row)
+
+      let mergeResults = this.transactions_row.concat(this.recurring_rows);
+      console.log("mergeResults: ", mergeResults);
+      this.transactions_row = mergeResults;
+      this.showRecurringDialog = false;
+    },
+    goBack() {
+      this.$router.go(-1);
+    },
+    postRecurringTransaction(num, text) {
+      console.log("postRecurringTransaction() called");
+      console.log("month: ", num, "text: ", text);
+      console.log("this.recurring_rows: ", this.recurring_rows);
+
+      const year = this.item.date.split("/")[0];
+      const day = this.item.date.split("/")[2];
+
+      console.log("", this.dateRange[num]);
+
+      // @todo - need to know if the checkbox is checked or not
+      // so that I know to add or remove the transaction from the recurring table
+
+      if (!this.dateRange[text]) {
+        console.log("add transaction to recurring table for month: ", text);
+        const newItem = {
+          date: year + "/" + num + "/" + day,
+          amount: this.item.amount,
+          name: this.item.name,
+          category: this.item.category,
+          memo: this.item.memo,
+          type: this.item.type,
+        };
+
+        // add the new item to the recurring_rows array
+        this.recurring_rows.push(newItem);
+      } else {
+        console.log(
+          "remove transaction from recurring table for month: ",
+          text
+        );
+        // remove the item from the recurring_rows array
+        this.recurring_rows = this.recurring_rows.filter(
+          (item) => item.date.split("/")[1] !== num
+        );
+
+      }
+    },
+    duplicateItem(item, _month) {
+      this.item = item ?? this.item;
+      let mon = _month ?? this.item.date.split("/")[1];
+      this.setMonthCheckbox(mon);
+      // prepare the new item to be added to the recurring table
+      this.showRecurringDialog = true;
+    },
+    setMonthCheckbox(mon) {
+      switch (mon.toString()) {
+        case "01":
+          this.dateRange.January = true;
+          break;
+        case "02":
+          this.dateRange.February = true;
+          break;
+        case "03":
+          this.dateRange.March = true;
+          break;
+        case "04":
+          this.dateRange.April = true;
+          break;
+        case "05":
+          this.dateRange.May = true;
+          break;
+        case "06":
+          this.dateRange.June = true;
+          break;
+        case "07":
+          this.dateRange.July = true;
+          break;
+        case "08":
+          this.dateRange.August = true;
+          break;
+        case "09":
+          this.dateRange.September = true;
+          break;
+        case "10":
+          this.dateRange.October = true;
+          break;
+        case "11":
+          this.dateRange.November = true;
+          break;
+        case "12":
+          this.dateRange.December = true;
+          break;
+      }
+    },
+    openUpdateDialog(item) {
+      console.log("openUpdateDialog", item);
+      this.showUpdateDialog = true;
+    },
+    updateRecurringTransactions() {
+      let temp = this.date.split("/");
+      let year = temp[0];
+      let month = temp[1];
+      let day = temp[2];
+      //this.insertRecurringTransaction(year, day)
     },
     loadTransactions() {
       let temp = this.filteredRow[0];
@@ -623,7 +762,6 @@ export default {
     },
     updateAccount() {
       console.log("update account");
-      // loop through all the transactions in recurring_rows and update the transactions array with that data
       let objIndex = this.transactions_row.findIndex(
         (obj) => obj.transaction_id === this.transaction_id
       );
@@ -727,6 +865,7 @@ export default {
         December: false,
       },
       showRecurringDialog: false,
+      item: {},
       bank: "",
       date: "",
       amount: "",
@@ -1336,28 +1475,7 @@ export default {
           ],
         },
       ],
-      recurring_rows: [
-        {
-          date: "2023/01/01",
-          name: "Opening balance",
-          amount: "158214.31",
-        },
-        {
-          date: "2023/01/10",
-          name: "Washington State Payroll",
-          amount: "4132.50",
-        },
-        {
-          date: "2023/01/01",
-          name: "Opening balance",
-          amount: "158214.31",
-        },
-        {
-          date: "2023/01/10",
-          name: "Washington State Payroll",
-          amount: "4132.50",
-        },
-      ],
+      recurring_rows: [],
       recurring_columns: [
         {
           name: "date",
