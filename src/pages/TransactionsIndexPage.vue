@@ -1,18 +1,26 @@
 <template>
   <div>
-    <q-select
-      dense
-      emit-value
-      option-value="value"
-      option-label="label"
-      class="q-py-sm"
-      :options="bankNames"
-      outlined
-      v-model="bank"
-      label="Switch Bank Accounts"
-      @update:model-value="switchBank()"
-    />
+    <div class="q-col-gutter-md row items-start  q-py-sm">
+      <div class="col-2">
+        <q-btn icon="arrow_back"
+        color="secondary" @click="goBack" label="Back" />
+      </div>
+      <div class="col-10">
+        <q-select
+          dense
+          emit-value
+          option-value="value"
+          option-label="label"
+          :options="bankNames"
+          outlined
+          v-model="bank"
+          label="Switch Bank Accounts"
+          @update:model-value="switchBank()"
+        />
+      </div>
+    </div>
     <div class="q-col-gutter-md row items-start">
+
       <div class="col-12">
         <data-table
           image="/src/pages/icons/transaction.png"
@@ -285,65 +293,55 @@
         </q-bar>
         <q-card-section class="bg-white text-black">
           <div class="q-pa-md shadow-24">
-
             <div class="col-6">
-                  <div class="text-h5">Recurring Transactions</div>
-                  <div>
-                    <br />
-                    <div class="text-h5">Months</div>
-                    Select which months you'd like to duplicate. For example, if
-                    you want to create a recurring transaction for every month
-                    from January 2023 to December 2023 select all the months. If
-                    you want to create a recurring transaction for the month of
-                    January, March and October mark those months only.
+              <div class="text-h5">Recurring Transactions</div>
+              <div>
+                <br />
+                <div class="text-h5">Months</div>
+                Select which months you'd like to duplicate. For example, if you
+                want to create a recurring transaction for every month from
+                January 2023 to December 2023 select all the months. If you want
+                to create a recurring transaction for the month of January,
+                March and October mark those months only.
+                <div>
+                  <div class="q-gutter-sm">
                     <div>
-                      <div class="q-gutter-sm">
-                        <div>
-                          <q-checkbox
-                            v-model="dateRange.January"
-                            label="January"
-                          />
-                          <q-checkbox
-                            v-model="dateRange.February"
-                            label="February"
-                          />
-                          <q-checkbox v-model="dateRange.March" label="March" />
-                          <q-checkbox v-model="dateRange.April" label="April" />
-                          <q-checkbox v-model="dateRange.May" label="May" />
-                          <q-checkbox v-model="dateRange.June" label="June" />
-                          <q-checkbox v-model="dateRange.July" label="July" />
-                          <q-checkbox
-                            v-model="dateRange.August"
-                            label="August"
-                          />
-                          <q-checkbox
-                            v-model="dateRange.September"
-                            label="September"
-                          />
-                          <q-checkbox
-                            v-model="dateRange.October"
-                            label="October"
-                          />
-                          <q-checkbox
-                            v-model="dateRange.November"
-                            label="November"
-                          />
-                          <q-checkbox
-                            v-model="dateRange.December"
-                            label="December"
-                          />
-                          <div>
-                            <q-table
-                              :rows="recurring_rows"
-                              :columns="recurring_columns"
-                              row-key="name"
-                            />
-                          </div>
-                        </div>
+                      <q-checkbox v-model="dateRange.January" label="January" />
+                      <q-checkbox
+                        v-model="dateRange.February"
+                        label="February"
+                      />
+                      <q-checkbox v-model="dateRange.March" label="March" />
+                      <q-checkbox v-model="dateRange.April" label="April" />
+                      <q-checkbox v-model="dateRange.May" label="May" />
+                      <q-checkbox v-model="dateRange.June" label="June" />
+                      <q-checkbox v-model="dateRange.July" label="July" />
+                      <q-checkbox v-model="dateRange.August" label="August" />
+                      <q-checkbox
+                        v-model="dateRange.September"
+                        label="September"
+                      />
+                      <q-checkbox v-model="dateRange.October" label="October" />
+                      <q-checkbox
+                        v-model="dateRange.November"
+                        label="November"
+                      />
+                      <q-checkbox
+                        v-model="dateRange.December"
+                        label="December"
+                      />
+                      <div>
+                        <q-table
+                          :rows="recurring_rows"
+                          :columns="recurring_columns"
+                          row-key="name"
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
           </div>
         </q-card-section>
         <q-card-actions>
@@ -356,13 +354,13 @@
           <q-btn color="primary" label="Cancel" v-close-popup />
         </q-card-actions>
       </q-card>
-      </q-dialog>
+    </q-dialog>
   </div>
 </template>
 
 <script>
 import DataTable from "src/components/DataTable.vue";
-import {v4 as uuid} from "uuid";
+import { v4 as uuid } from "uuid";
 export default {
   components: { DataTable },
   name: "TransactionsIndexPage",
@@ -455,6 +453,9 @@ export default {
     this.loadTransactions();
   },
   methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
     duplicateItem(item) {
       console.log("duplicateItem() called");
       console.log("item: ", item);
@@ -605,7 +606,7 @@ export default {
       let newTransaction = {
         transaction_id: uuid(),
         date: this.date,
-        amount: this.type === 'income' ? this.amount : -Math.abs(this.amount),
+        amount: this.type === "income" ? this.amount : -Math.abs(this.amount),
         balance: "",
         expense: this.amount < 0 ?? 0,
         income: this.amount > 0 ?? 0,
@@ -618,7 +619,7 @@ export default {
         icon_label: "",
       };
       console.log("newTransaction: ", newTransaction);
-      this.transactions_row.push( newTransaction);
+      this.transactions_row.push(newTransaction);
     },
     updateAccount() {
       console.log("update account");
@@ -628,10 +629,10 @@ export default {
       );
       console.log("objIndex: ", objIndex);
 
-       let updatedTransaction = {
+      let updatedTransaction = {
         transaction_id: this.transaction_id,
         date: this.date,
-        amount: this.type === 'income' ? this.amount : -Math.abs(this.amount),
+        amount: this.type === "income" ? this.amount : -Math.abs(this.amount),
         balance: "",
         expense: this.amount < 0 ?? 0,
         income: this.amount > 0 ?? 0,
