@@ -91,7 +91,7 @@
                 dense
                 class="q-py-sm"
                 type="text"
-                mode="decimal"
+                inputmode="decimal"
                 outlined
                 v-model="starting_balance"
                 label="Starting balance"
