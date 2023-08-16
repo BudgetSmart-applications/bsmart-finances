@@ -1,14 +1,6 @@
 <template>
   <div>
     <div class="q-col-gutter-md row items-start q-py-sm">
-      <div class="col-2">
-        <q-btn
-          icon="arrow_back"
-          color="secondary"
-          @click="goBack"
-          label="Back"
-        />
-      </div>
       <div class="col-10">
         <q-select
           dense
@@ -405,7 +397,7 @@
           <q-btn
             class="q-ma-sm"
             color="negative"
-            @click="makeRecuringTransactions"
+            @click="makeRecurringTransactions"
             >Create</q-btn
           >
           <q-btn color="primary" label="Cancel" v-close-popup />
@@ -622,13 +614,8 @@ export default {
       }
       // this.recurring_rows = recurringTransactions;
     },
-    makeRecuringTransactions() {
-      console.log("makeRecuringTransactions() called");
-      console.log("this.recurring_rows: ", this.recurring_rows);
-      console.log("transactions_row", this.transactions_row)
-
+    makeRecurringTransactions() {
       let mergeResults = this.transactions_row.concat(this.recurring_rows);
-      console.log("mergeResults: ", mergeResults);
       this.transactions_row = mergeResults;
       this.showRecurringDialog = false;
     },

@@ -130,9 +130,7 @@ export default {
   name: "AccountsIndexPage",
   methods: {
     duplicateItem(item) {
-      console.log("duplicateItem() called");
-      console.log("item: ", item);
-      this.showCreateAccount = true;
+      this.showCreateAccount = false;
       this.showUpdate = false;
       this.bank_name = item.bank_name;
       this.account_name = "";
@@ -149,7 +147,6 @@ export default {
       this.action = "Create";
     },
     redirectToItem(account){
-      // this.$router.push({ name: "TransactionsIndexPage", params: { bank_id: account.bank_id } });
       this.$router.push('/transactions/' + account.bank_id);
     },
     updateAccount(){
@@ -232,7 +229,6 @@ export default {
       this.bank_rows.push(newAccount);
     },
     deleteItem(account) {
-      console.log("emit to parent for deletion", account);
       const filteredAccounts = this.bank_rows.filter(
         (row) => row.account_id !== account.account_id
       );
@@ -240,7 +236,6 @@ export default {
       this.showCreateAccount = false;
     },
     createItem() {
-      console.log("emit to parent for creating new");
       this.showCreateAccount = true;
       this.showUpdate = false;
       this.bank_name = "";
@@ -258,7 +253,6 @@ export default {
       this.action = "Create";
     },
     editItem(row) {
-      console.log("emit to parent", row);
       this.showCreateAccount = true;
       this.showUpdate = true;
       this.bank_id = row.bank_id;
@@ -299,7 +293,6 @@ export default {
       accounting_year: ["2023"],
       selectedRow: "",
       showUpdate: false,
-      showCreateAccount: false,
       options: ["Checking", "Savings"],
       bank_name: "",
       account_name: "",
@@ -312,6 +305,7 @@ export default {
       contact_name: "",
       contact_email: "",
       contact_phone: "",
+      bank_rows: [],
       contact_memo: "",
       bank_rows: [
         {

@@ -9,7 +9,12 @@ import AboutDialog from './components/AboutDialog.vue'
 
 export default defineComponent({
   components: { AboutDialog },
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+      tab: 'mails'
+    }
+  }
 })
 </script>
 <style>

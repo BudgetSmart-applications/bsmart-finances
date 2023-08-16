@@ -17,6 +17,25 @@
 
         <div>{{ markup.name }} v{{ markup.version }}</div>
       </q-toolbar>
+      <q-tabs
+        dense
+        v-model="tab"
+        inline-label
+        align="left"
+        class="bg-secondary text-white shadow-2"
+      >
+        <q-tab
+          name="video"
+          icon="video_library"
+          label="Training Videos"
+          @click="goToTopics"
+        />
+        <q-tab v-show="false" name="transactions" icon="point_of_sale" label="Transactions" @click="goToTransactions" />
+        <q-tab v-show="false" name="reports" icon="receipt_long" label="Reports" />
+        <q-tab v-show="false" name="messages" icon="mail" label="Messages" />
+        <q-tab v-show="false" name="settings" icon="settings" label="Settings" />
+        <q-tab v-show="false" name="help" icon="help" label="Help" />
+      </q-tabs>
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
@@ -40,6 +59,7 @@
 
 <script>
 import { defineComponent, ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import EssentialLink from "components/EssentialLink.vue";
 export default defineComponent({
   name: "MainLayout",
@@ -49,6 +69,9 @@ export default defineComponent({
   },
 
   setup() {
+    const tab = ref("");
+    const router = useRouter();
+    const route = useRoute();
     const markup = {
       name: 'BSmart',
       version: '0.0.1',
@@ -89,8 +112,27 @@ export default defineComponent({
     const leftDrawerOpen = ref(false);
     return {
       markup,
+      tab,
       essentialLinks: links,
       leftDrawerOpen,
+      goToTopics() {
+        router.push("library");
+      },
+      goToTransactions() {
+        router.push("/transactions/1");
+      },
+      goToReports() {
+        router.push("/reports");
+      },
+      goToMessages() {
+        router.push("/messages");
+      },
+      goToSettings() {
+        router.push("/settings");
+      },
+      goToHelp() {
+        router.push("/read-online/toc");
+      },
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },

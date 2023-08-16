@@ -7,6 +7,13 @@ const routes = [
       {
         path: "/accounts",
         component: () => import("src/pages/AccountsIndexPage.vue"),
+      },{
+        path: "/messages",
+        component: () => import("src/pages/MessageListPage.vue"),
+      },
+      {
+        path: "/support",
+        component: () => import("src/pages/SupportPage.vue"),
       },
       {
         path: "/transactions/:bank_id",
@@ -90,6 +97,10 @@ const routes = [
       {
         path: "/contacts",
         component: () => import("src/pages/ContactIndexPage.vue"),
+      },
+      {
+        path: "library",
+        component: () => import("src/pages/Docs/components/LibraryLinksPage.vue"),
       },
     ],
   },
